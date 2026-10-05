@@ -1,0 +1,295 @@
+/* Prototype-schil en nieuwe onderdelen. Alleen tokens uit het MedMij design system (assets/ds).
+   De schermen zelf houden de inline stijlen uit Bijlage C mockups (ontwerp/). */
+
+/* Paginastijl uit het ontwerp (helmet-blok van Bijlage C mockups.dc.html). */
+body { margin: 0; background: var(--gray-10); }
+a { color: var(--text-link); text-decoration: none; }
+a:hover { color: var(--color-primary-hover); text-decoration: underline; }
+
+/* Zichtbare focus. De ring uit base.css valt weg omdat spacing.css --focus-ring
+   overschrijft met een box-shadow-waarde; hier dezelfde ring met de kleurtoken. */
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ---- Prototypebalk, frame en footer ---- */
+.app-bar,
+.app-footer {
+  width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+.app-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+.app-page {
+  width: 1440px;
+  margin: 0 auto;
+  padding-bottom: var(--space-8);
+  font-family: var(--font-sans);
+}
+.app-frame {
+  width: 1440px;
+  background: var(--white);
+  display: flex;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.app-footer {
+  padding-bottom: var(--space-6);
+}
+.app-footer p {
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--border-subtle);
+}
+
+/* ---- Knoppen: Button en IconButton uit het design system (components/core) ---- */
+.ds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--target-comfortable);
+  padding: 11px 22px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard);
+}
+.ds-btn:active:not(:disabled) { transform: scale(0.97); }
+.ds-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.ds-btn-sm { min-height: 36px; padding: 8px 16px; font-size: var(--text-sm); gap: 6px; }
+.ds-btn-primary { background: var(--color-primary); color: var(--text-on-color); }
+.ds-btn-primary:hover:not(:disabled) { background: var(--color-primary-hover); }
+.ds-btn-secondary { background: var(--white); color: var(--color-primary); border: 1.5px solid var(--color-primary); }
+.ds-btn-secondary:hover:not(:disabled),
+.ds-btn-ghost:hover:not(:disabled) { background: var(--surface-blue); }
+.ds-btn-ghost { background: transparent; color: var(--color-primary); }
+
+.ds-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--target-comfortable);
+  height: var(--target-comfortable);
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--medmij-blue);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+.ds-iconbtn:hover,
+.ds-iconbtn[aria-expanded="true"] { background: var(--blue-10); }
+
+/* ---- Tijdslijn: selectie en aanduidingen ---- */
+.app-scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.app-check {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  display: block;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+.app-row.is-selected { background: var(--blue-10); }
+.app-selectbar {
+  grid-column: 2 / -1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.app-selectbar-count {
+  margin-right: auto;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+}
+.app-status { color: var(--text-body); }
+
+/* Dezelfde rustige aanduiding als "afgeleide titel" en "2 versies" in beeld 2. */
+.app-notes {
+  display: flex;
+  gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+.app-note {
+  padding: 0;
+  border: none;
+  border-bottom: 1px dotted var(--gray-50);
+  background: none;
+  font-family: inherit;
+  font-size: var(--text-xs);
+  line-height: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* Pop-up met brongegevens, zelfde vorm als in beeld 2. */
+.app-popover {
+  position: fixed;
+  z-index: 10;
+  width: 248px;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  background: var(--white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-body);
+  pointer-events: none;
+}
+.app-popover[hidden] { display: none; }
+.app-popover-arrow {
+  position: absolute;
+  top: -6px;
+  left: 22px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background: var(--white);
+  border-left: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-subtle);
+}
+.app-popover-gap { display: block; height: var(--space-2); }
+
+/* ---- Detailscherm: wissel tussen verbeterde versie en bron ---- */
+.app-detail-kop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin: 10px 0 18px;
+}
+.app-toggle {
+  display: inline-flex;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border: var(--border-width) solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  background: var(--white);
+}
+.app-toggle button {
+  min-height: 36px;
+  padding: 0 var(--space-4);
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--text-body);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+.app-toggle button:hover { background: var(--surface-subtle); }
+.app-toggle button[aria-pressed="true"] {
+  background: var(--blue-10);
+  color: var(--medmij-blue);
+  font-weight: var(--weight-semibold);
+}
+
+/* ---- Pop-upvenster "Documenten verbeteren" ---- */
+.app-dialog {
+  width: 480px;
+  box-sizing: border-box;
+  padding: var(--space-5);
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-sans);
+  color: var(--text-body);
+}
+.app-dialog::backdrop { background: color-mix(in srgb, var(--black) 35%, transparent); }
+.app-dialog-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.app-dialog h2 {
+  margin-top: var(--space-2);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+.app-dialog-count {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+.app-info {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--surface-subtle);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+.app-info[hidden] { display: none; }
+.app-info p + p { margin-top: var(--space-2); }
+.app-dialog fieldset {
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  border: none;
+}
+.app-dialog legend,
+.app-dialog-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  padding: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-strong);
+}
+.app-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--target-comfortable);
+  font-size: var(--text-base);
+  cursor: pointer;
+}
+.app-dialog-label { margin-top: var(--space-4); }
+.app-select {
+  width: 100%;
+  min-height: var(--target-comfortable);
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border-interactive);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  color: var(--text-strong);
+}
+.app-select:disabled { opacity: 0.45; }
+.app-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}

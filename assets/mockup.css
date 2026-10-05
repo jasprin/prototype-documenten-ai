@@ -1,4 +1,0 @@
-/* Paginastijl uit Bijlage C mockups.dc.html (helmet-blok), ongewijzigd overgenomen. */
-body { margin: 0; background: var(--gray-10); }
-a { color: var(--text-link); text-decoration: none; }
-a:hover { color: var(--color-primary-hover); text-decoration: underline; }

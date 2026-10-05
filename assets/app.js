@@ -1,0 +1,328 @@
+// Interactief prototype: tijdslijn en detailscherm van het pathologieverslag.
+// Schermopbouw en inline stijlen komen uit Bijlage C mockups (ontwerp/); nieuwe onderdelen staan in assets/app.css.
+(function () {
+  var DATA = window.PGO_DATA;
+  var DOCS = DATA.documenten;
+  var OPSLAG = 'pgo-prototype-v1';
+
+  // ---- Toestand (bewaard zolang het tabblad open is) ---------------------------
+  var state = laad() || { verbeteringen: {}, weergave: 'verbeterd', status: '' };
+  var selectie = [];
+
+  function laad() {
+    try { return JSON.parse(sessionStorage.getItem(OPSLAG)); } catch (e) { return null; }
+  }
+  function bewaar() {
+    try { sessionStorage.setItem(OPSLAG, JSON.stringify(state)); } catch (e) { /* zonder opslag werkt alles binnen de pagina */ }
+  }
+
+  // ---- Hulpfuncties ----------------------------------------------------------
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function svg(paths, style) {
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="' + style + '" aria-hidden="true">' + paths + '</svg>';
+  }
+  var ICON_PIJL_OMLAAG = svg('<path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path>', 'width: 14px; height: 14px;');
+  var ICON_CHEVRON = svg('<path d="m9 18 6-6-6-6"></path>', 'width: 14px; height: 14px;');
+  function sjabloon(id) { return document.getElementById(id).innerHTML; }
+  function meervoud(n, een, meer) { return n + ' ' + (n === 1 ? een : meer); }
+
+  function doc(id) { return DOCS.find(function (d) { return d.id === id; }); }
+  function verbetering(id) { return state.verbeteringen[id] || {}; }
+  function groepSamengevoegd(groep) {
+    return DOCS.some(function (d) { return d.groep === groep && verbetering(d.id).samengevoegd; });
+  }
+  function groepLeden(groep) { return DOCS.filter(function (d) { return d.groep === groep; }); }
+
+  // Regels zoals Sanne ze ziet: samengevoegde dubbele documenten tellen als één regel.
+  function zichtbareDocs() {
+    return DOCS.filter(function (d) {
+      if (!d.groep || !groepSamengevoegd(d.groep)) return true;
+      return groepLeden(d.groep)[0].id === d.id;
+    });
+  }
+  function weergaveVan(d) {
+    var v = verbetering(d.id);
+    var b = d.bron;
+    return {
+      titel: v.titels ? d.verbeterd.titel : b.titel,
+      soort: v.titels ? d.verbeterd.soort : b.soort,
+      datum: b.datum, organisatie: b.organisatie, verlener: b.verlener,
+    };
+  }
+
+  // ---- Tijdslijn -------------------------------------------------------------
+  var KOLOMMEN = 'grid-template-columns: 20px 276px 276px 104px 192px 120px; column-gap: 16px; align-items: center; padding: 0 12px 0 16px;';
+  var KOP_CEL = 'font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);';
+  var CEL = 'white-space: nowrap; font-size: var(--text-base); color: var(--text-body);';
+
+  function renderTijdslijn() {
+    var docs = zichtbareDocs();
+    selectie = selectie.filter(function (id) { return docs.some(function (d) { return d.id === id; }); });
+    var heeftVerbeteringen = Object.keys(state.verbeteringen).length > 0;
+
+    var rijen = docs.map(function (d) {
+      var w = weergaveVan(d);
+      var v = verbetering(d.id);
+      var titel = d.detail
+        ? '<a href="#/pathologieverslag" style="white-space: nowrap; font-size: var(--text-base); color: var(--text-link);">' + esc(w.titel) + '</a>'
+        : '<span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-link);">' + esc(w.titel) + '</span>';
+      var notities = [];
+      if (d.groep && groepSamengevoegd(d.groep)) notities.push('<button type="button" class="app-note" data-note="versies" data-id="' + d.id + '">' + meervoud(groepLeden(d.groep).length, 'versie', 'versies') + '</button>');
+      if (v.titels || v.uitleg) notities.push('<button type="button" class="app-note" data-note="verbeterd" data-id="' + d.id + '">verbeterde versie</button>');
+      var gekozen = selectie.indexOf(d.id) !== -1;
+      return '<div class="app-row' + (gekozen ? ' is-selected' : '') + '" style="display: grid; ' + KOLOMMEN + ' height: 52px; border-bottom: 1px solid var(--gray-10);">'
+        + '<span><input type="checkbox" class="app-check" data-id="' + d.id + '"' + (gekozen ? ' checked' : '') + ' aria-label="Selecteer ' + esc(w.titel) + ', ' + esc(w.datum) + '"></span>'
+        + '<span style="min-width: 0; line-height: 1.25;">' + titel
+        + (notities.length ? '<span class="app-notes">' + notities.join('<span aria-hidden="true">·</span>') + '</span>' : '')
+        + '</span>'
+        + '<span style="' + CEL + '">' + esc(w.soort) + '</span>'
+        + '<span style="font-size: var(--text-base); color: var(--text-body);">' + esc(w.datum) + '</span>'
+        + '<span style="' + CEL + '">' + esc(w.organisatie) + '</span>'
+        + '<span style="' + CEL + '">' + esc(w.verlener) + '</span>'
+        + '</div>';
+    }).join('');
+
+    var alles = selectie.length === docs.length;
+    var kopVink = '<span><input type="checkbox" class="app-check" data-id="*"' + (alles ? ' checked' : '') + ' aria-label="Selecteer alle documenten"></span>';
+    var kop = selectie.length
+      ? kopVink + '<span class="app-selectbar"><span class="app-selectbar-count">' + meervoud(selectie.length, 'document', 'documenten') + ' geselecteerd</span>'
+        + '<button type="button" class="ds-btn ds-btn-ghost ds-btn-sm" data-actie="wis">Selectie wissen</button>'
+        + '<button type="button" class="ds-btn ds-btn-secondary ds-btn-sm" data-actie="verbeter">Verbeteren</button></span>'
+      : kopVink
+        + '<span style="display: flex; align-items: center; gap: 6px; ' + KOP_CEL + '">Document</span>'
+        + '<span style="' + KOP_CEL + '">Documentsoort</span>'
+        + '<span style="display: flex; align-items: center; gap: 5px; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Gemaakt op' + ICON_PIJL_OMLAAG + '</span>'
+        + '<span style="' + KOP_CEL + '">Zorgorganisatie</span>'
+        + '<span style="' + KOP_CEL + '">Gemaakt door</span>';
+
+    var onder = '';
+    if (state.status) onder += '<span class="app-status">' + esc(state.status) + '</span> ';
+    onder += heeftVerbeteringen
+      ? 'Bij een verbeterde versie zie je de titel zoals de bron die levert door de aanduiding aan te wijzen. Het document zelf verandert niet.'
+      : 'Selecteer documenten om ze te laten verbeteren.';
+
+    return {
+      hoogte: 1043,
+      main: '<main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 32px 32px 0; box-sizing: border-box;">'
+        + sjabloon('tpl-lijst-kop') + sjabloon('tpl-lijst-filters')
+        + '<div style="flex: 1; min-height: 0; border: 1px solid var(--gray-10); border-bottom: none; border-radius: var(--radius-md) var(--radius-md) 0 0; background: var(--white); display: flex; flex-direction: column; overflow: hidden; position: relative;">'
+        + '<div style="display: grid; ' + KOLOMMEN + ' height: 44px; flex: none; border-bottom: 1px solid var(--border-subtle); background: var(--white);">' + kop + '</div>'
+        + '<div class="app-scroll" style="flex: 1; min-height: 0;">' + rijen + '</div>'
+        + '</div>'
+        + '<div role="status" style="padding: 14px 20px 20px; font-size: var(--text-sm); color: var(--text-muted);">' + onder + '</div>'
+        + '</main>',
+    };
+  }
+
+  // ---- Detailscherm pathologieverslag -----------------------------------------
+  var LABEL = 'display: block; font-size: var(--text-sm); color: var(--text-muted);';
+  var WAARDE = 'display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);';
+
+  function veld(label, waarde, extra) {
+    var leeg = waarde === DATA.LEEG;
+    return '<span style="display: block;' + (extra || '') + '"><span style="' + LABEL + '">' + esc(label) + '</span>'
+      + '<span style="' + (leeg ? WAARDE.replace('var(--text-strong)', 'var(--text-body)') : WAARDE) + '">' + esc(waarde) + '</span></span>';
+  }
+
+  function renderDetail() {
+    var d = doc('patho');
+    var v = verbetering('patho');
+    var heeftVerbetering = !!(v.titels || v.uitleg);
+    var weergave = heeftVerbetering ? state.weergave : 'bron';
+    var titels = weergave === 'verbeterd' && v.titels;
+    var uitleg = weergave === 'verbeterd' && v.uitleg;
+    var titel = titels ? d.verbeterd.titel : d.bron.titel;
+    var soort = titels ? d.verbeterd.soort : d.bron.soort;
+    var groep = titels ? DATA.pathologie.verbeterd.groep : DATA.pathologie.bron.groep;
+
+    var wissel = heeftVerbetering
+      ? '<div class="app-toggle" role="group" aria-label="Weergave">'
+        + '<button type="button" data-weergave="verbeterd" aria-pressed="' + (weergave === 'verbeterd') + '">Verbeterde versie</button>'
+        + '<button type="button" data-weergave="bron" aria-pressed="' + (weergave === 'bron') + '">Zoals de bron het levert</button></div>'
+      : '';
+
+    var inhoud = uitleg
+      ? '<div style="flex: 1; min-height: 0; margin-top: 22px; display: grid; grid-template-columns: 548px 548px; column-gap: 16px;">'
+        + sjabloon('tpl-viewer-klein') + sjabloon('tpl-uitleg-' + uitleg) + '</div>'
+      : sjabloon('tpl-viewer-groot');
+
+    return {
+      hoogte: uitleg ? 1048 : 988,
+      main: '<main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 28px 32px 0; box-sizing: border-box;">'
+        + '<div style="display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); color: var(--text-muted);">'
+        + '<a href="#/" style="color: var(--text-link);">Documenten</a>' + ICON_CHEVRON + '<span>' + esc(titel) + '</span></div>'
+        + '<div class="app-detail-kop"><h1 style="margin: 0; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">' + esc(titel) + '</h1>' + wissel + '</div>'
+        + '<div style="display: grid; grid-template-columns: repeat(3, 356px); column-gap: 22px; row-gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--gray-10);">'
+        + veld('Document', titel) + veld('Documentsoort', soort) + veld('Gemaakt op', d.bron.datum)
+        + veld('Zorgorganisatie', d.bron.organisatie) + veld('Gemaakt door', d.bron.verlener) + veld('Groep', groep)
+        + veld('Achtergrond', DATA.pathologie.achtergrond, ' grid-column: 1 / -1;')
+        + '</div>'
+        + inhoud
+        + '</main>',
+    };
+  }
+
+  // ---- Weergeven ----------------------------------------------------------------
+  var frame = document.getElementById('app-frame');
+  var popover = document.getElementById('app-popover');
+
+  function route() { return location.hash === '#/pathologieverslag' ? 'detail' : 'tijdslijn'; }
+
+  function render(focusSelector) {
+    verbergPopover();
+    var scherm = route() === 'detail' ? renderDetail() : renderTijdslijn();
+    var oud = frame.querySelector('main');
+    var scroll = frame.querySelector('.app-scroll');
+    var scrollTop = scroll ? scroll.scrollTop : 0;
+    var tmp = document.createElement('div');
+    tmp.innerHTML = scherm.main;
+    if (oud) frame.replaceChild(tmp.firstChild, oud); else frame.appendChild(tmp.firstChild);
+    frame.style.height = scherm.hoogte + 'px';
+    var nieuwScroll = frame.querySelector('.app-scroll');
+    if (nieuwScroll && route() === 'tijdslijn') nieuwScroll.scrollTop = scrollTop;
+    var kopVink = frame.querySelector('.app-check[data-id="*"]');
+    if (kopVink) kopVink.indeterminate = selectie.length > 0 && !kopVink.checked;
+    if (focusSelector) { var f = frame.querySelector(focusSelector); if (f) f.focus(); }
+  }
+
+  window.addEventListener('hashchange', function () {
+    state.status = '';
+    bewaar();
+    render();
+    window.scrollTo(0, 0);
+  });
+
+  // ---- Selecteren --------------------------------------------------------------
+  frame.addEventListener('change', function (e) {
+    var t = e.target;
+    if (!t.classList.contains('app-check')) return;
+    var id = t.getAttribute('data-id');
+    if (id === '*') {
+      selectie = t.checked ? zichtbareDocs().map(function (d) { return d.id; }) : [];
+    } else if (t.checked) {
+      selectie.push(id);
+    } else {
+      selectie = selectie.filter(function (s) { return s !== id; });
+    }
+    render('.app-check[data-id="' + id + '"]');
+  });
+
+  frame.addEventListener('click', function (e) {
+    var knop = e.target.closest('button');
+    if (!knop) return;
+    var actie = knop.getAttribute('data-actie');
+    if (actie === 'wis') { selectie = []; render('.app-check[data-id="*"]'); }
+    if (actie === 'verbeter') openDialoog();
+    var w = knop.getAttribute('data-weergave');
+    if (w) { state.weergave = w; bewaar(); render('[data-weergave="' + w + '"]'); }
+    if (knop.getAttribute('data-nav') === 'documenten') location.hash = '#/';
+    if (knop.classList.contains('app-note')) toonPopover(knop);
+  });
+
+  // ---- Pop-upvenster -----------------------------------------------------------
+  var dialoog = document.getElementById('app-dialoog');
+  var form = dialoog.querySelector('form');
+  var info = document.getElementById('app-info');
+  var infoKnop = document.getElementById('app-info-knop');
+
+  function openDialoog() {
+    document.getElementById('app-dialoog-aantal').textContent = meervoud(selectie.length, 'document', 'documenten') + ' geselecteerd';
+    info.hidden = true;
+    infoKnop.setAttribute('aria-expanded', 'false');
+    werkDialoogBij();
+    dialoog.showModal();
+  }
+  function werkDialoogBij() {
+    form.elements.taal.disabled = !form.elements.uitleg.checked;
+    form.querySelector('[data-actie="bevestig"]').disabled = !form.elements.titels.checked && !form.elements.uitleg.checked;
+  }
+  form.addEventListener('change', werkDialoogBij);
+  infoKnop.addEventListener('click', function () {
+    info.hidden = !info.hidden;
+    infoKnop.setAttribute('aria-expanded', String(!info.hidden));
+  });
+  form.querySelector('[data-actie="annuleer"]').addEventListener('click', function () { dialoog.close(); });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var opties = { titels: form.elements.titels.checked, uitleg: form.elements.uitleg.checked, taal: form.elements.taal.value };
+    var ids = selectie.slice();
+    // Een geselecteerde samengevoegde regel staat voor alle versies in de groep.
+    ids.forEach(function (id) {
+      var d = doc(id);
+      if (d.groep) groepLeden(d.groep).forEach(function (l) { if (ids.indexOf(l.id) === -1) ids.push(l.id); });
+    });
+    var resultaat = window.MockAI.verbeter(ids, opties);
+    Object.keys(resultaat).forEach(function (id) {
+      var oud = state.verbeteringen[id] || {};
+      var nieuw = resultaat[id];
+      state.verbeteringen[id] = {
+        titels: oud.titels || nieuw.titels || undefined,
+        samengevoegd: oud.samengevoegd || nieuw.samengevoegd || undefined,
+        uitleg: nieuw.uitleg || oud.uitleg || undefined,
+      };
+    });
+    var verbeterd = selectie.filter(function (id) {
+      var d = doc(id);
+      return resultaat[id] || (d.groep && groepLeden(d.groep).some(function (l) { return resultaat[l.id]; }));
+    }).length;
+    var rest = selectie.length - verbeterd;
+    state.status = verbeterd === 0
+      ? 'Voor de gekozen documenten was geen verbetering nodig.'
+      : meervoud(verbeterd, 'document', 'documenten') + ' verbeterd.' + (rest ? ' Voor ' + meervoud(rest, 'document', 'documenten') + ' was geen verbetering nodig.' : '');
+    state.weergave = 'verbeterd';
+    selectie = [];
+    bewaar();
+    dialoog.close();
+    render('.app-check[data-id="*"]');
+  });
+
+  // ---- Aanduidingen: brongegevens tonen ---------------------------------------
+  function popoverInhoud(knop) {
+    var d = doc(knop.getAttribute('data-id'));
+    var regel = function (label, waarde) {
+      return '<span style="display: block; color: var(--text-muted); font-size: var(--text-xs);">' + esc(label) + '</span>'
+        + '<span style="display: block; color: var(--text-strong);">' + esc(waarde) + '</span>';
+    };
+    if (knop.getAttribute('data-note') === 'versies') {
+      return '<span style="display: block; color: var(--text-muted); font-size: var(--text-xs);">Versies zoals de bron die levert</span>'
+        + groepLeden(d.groep).map(function (l) { return '<span style="display: block; color: var(--text-strong);">' + esc(l.bron.titel) + ' · ' + esc(l.bron.datum) + '</span>'; }).join('');
+    }
+    var v = verbetering(d.id);
+    var html = '';
+    if (v.titels) {
+      html += regel('Titel zoals de bron die levert', d.bron.titel);
+      if (d.bron.soort !== d.verbeterd.soort) html += '<span class="app-popover-gap"></span>' + regel('Documentsoort zoals de bron die levert', d.bron.soort);
+    }
+    if (v.uitleg) html += (html ? '<span class="app-popover-gap"></span>' : '') + regel('Uitleg in begrijpelijke taal', DATA.talen[v.uitleg]);
+    return html;
+  }
+  function toonPopover(knop) {
+    popover.querySelector('.app-popover-body').innerHTML = popoverInhoud(knop);
+    var r = knop.getBoundingClientRect();
+    popover.style.left = Math.max(8, r.left - 16) + 'px';
+    popover.style.top = (r.bottom + 10) + 'px';
+    popover.hidden = false;
+  }
+  function verbergPopover() { popover.hidden = true; }
+  frame.addEventListener('mouseover', function (e) { var n = e.target.closest('.app-note'); if (n) toonPopover(n); });
+  frame.addEventListener('mouseout', function (e) { if (e.target.closest('.app-note')) verbergPopover(); });
+  frame.addEventListener('focusin', function (e) { if (e.target.classList.contains('app-note')) toonPopover(e.target); });
+  frame.addEventListener('focusout', function (e) { if (e.target.classList.contains('app-note')) verbergPopover(); });
+  frame.addEventListener('scroll', verbergPopover, true);
+  window.addEventListener('scroll', verbergPopover);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') verbergPopover(); });
+
+  // ---- Opnieuw beginnen --------------------------------------------------------
+  document.getElementById('app-reset').addEventListener('click', function () {
+    state = { verbeteringen: {}, weergave: 'verbeterd', status: '' };
+    selectie = [];
+    bewaar();
+    if (location.hash && location.hash !== '#/') location.hash = '#/'; else render();
+    window.scrollTo(0, 0);
+  });
+
+  render();
+})();
