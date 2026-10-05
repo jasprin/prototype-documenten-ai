@@ -1,0 +1,54 @@
+/* MedMij — Spacing, radii, shadows & shape language (Vormentaal)
+   The brand shape language derives from the heart: soft, generously rounded forms.
+   Frames (kaders): 3mm corner radius on A4, 15% black shadow (huisstijlgids p.12). */
+
+:root {
+  /* Spacing scale (4px base) */
+  --space-0:  0;
+  --space-1:  0.25rem;  /* 4 */
+  --space-2:  0.5rem;   /* 8 */
+  --space-3:  0.75rem;  /* 12 */
+  --space-4:  1rem;     /* 16 */
+  --space-5:  1.5rem;   /* 24 */
+  --space-6:  2rem;     /* 32 */
+  --space-7:  3rem;     /* 48 */
+  --space-8:  4rem;     /* 64 */
+  --space-9:  6rem;     /* 96 */
+
+  /* Radii — soft, derived from the heart shape language */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   14px;   /* default card radius (~3mm feel) */
+  --radius-lg:   22px;
+  --radius-xl:   32px;
+  --radius-pill: 999px;
+  --radius-blob: 42% 58% 56% 44% / 54% 44% 56% 46%; /* organic 'vorm' blob */
+
+  /* Shadows — subtle, 15% black per the kader spec */
+  --shadow-sm:  0 1px 2px rgba(28,28,30,0.06), 0 1px 3px rgba(28,28,30,0.08);
+  --shadow-md:  0 4px 12px rgba(28,28,30,0.10);
+  --shadow-lg:  0 10px 30px rgba(28,28,30,0.13);
+  --shadow-card: 0 6px 22px rgba(56,75,150,0.10); /* blue-tinted lift */
+  --shadow-kader: 0 2px 12px rgba(0,0,0,0.15); /* huisstijl kader shadow — 15% black (p.12) */
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgba(56,75,150,0.35);
+
+  /* Borders */
+  --border-width: 1px;
+
+  /* Interactive target sizes — WCAG 2.2 SC 2.5.8 */
+  --target-min: 24px;          /* absolute minimum */
+  --target-comfortable: 44px;  /* preferred touch target */
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-narrow: 760px;
+
+  /* Motion — calm, reassuring; ease-out, no bounce */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --dur-fast:   140ms; /* @kind other */
+  --dur-base:   220ms; /* @kind other */
+  --dur-slow:   360ms; /* @kind other */
+}

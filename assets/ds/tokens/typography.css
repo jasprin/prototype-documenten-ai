@@ -1,0 +1,48 @@
+/* MedMij — Typography tokens
+   Brand typeface: Fira Sans (Light→Bold). Office equivalent: Aptos.
+   Fira Sans is highly legible; MedMij favours clear, calm, friendly copy. */
+
+:root {
+  /* Families */
+  --font-sans:   'Fira Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-office: 'Aptos', 'Fira Sans', 'Segoe UI', sans-serif; /* MS Office equivalent */
+  --font-display: var(--font-sans);
+  --font-body:    var(--font-sans);
+
+  /* Weights (Fira Sans range) */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+
+  /* Type scale — rem based, 1rem = 16px */
+  --text-xs:   0.75rem;   /* 12px — captions, labels */
+  --text-sm:   0.875rem;  /* 14px — secondary */
+  --text-base: 1rem;      /* 16px — body */
+  --text-md:   1.125rem;  /* 18px — lead body */
+  --text-lg:   1.375rem;  /* 22px — subtitle */
+  --text-xl:   1.75rem;   /* 28px — H3 */
+  --text-2xl:  2.25rem;   /* 36px — H2 */
+  --text-3xl:  3rem;      /* 48px — H1 */
+  --text-4xl:  4rem;      /* 64px — display */
+
+  /* Line heights */
+  --leading-tight:   1.12;
+  --leading-snug:    1.28;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+
+  /* ===== Semantic roles ===== */
+  --font-display-size:  var(--text-3xl);
+  --font-h1-size:       var(--text-3xl);
+  --font-h2-size:       var(--text-2xl);
+  --font-h3-size:       var(--text-xl);
+  --font-lead-size:     var(--text-md);
+  --font-body-size:     var(--text-base);
+  --font-caption-size:  var(--text-sm);
+}

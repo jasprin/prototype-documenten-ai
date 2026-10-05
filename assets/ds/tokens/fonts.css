@@ -1,0 +1,50 @@
+/* MedMij — Fira Sans webfont (huisstijlletter)
+   Fira Sans is the MedMij brand typeface, online & offline. Latin subset, self-hosted woff2.
+   Microsoft Office equivalent is Aptos (declare via --font-office for Office-bound docs). */
+
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/firasans-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/firasans-400-italic.woff2') format('woff2');
+}
+@font-face {
+  /* Official MedMij upload (FiraSans-Medium.ttf) takes priority; woff2 is the latin-subset fallback. */
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/FiraSans-Medium.ttf') format('truetype'),
+       url('../assets/fonts/firasans-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/firasans-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/firasans-700.woff2') format('woff2');
+}
+
+/* Aptos — Microsoft Office equivalent (--font-office). Display weight uploaded by the user. */
+@font-face {
+  font-family: 'Aptos';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../assets/fonts/Aptos-Display.ttf') format('truetype');
+}

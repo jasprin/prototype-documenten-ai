@@ -1,0 +1,44 @@
+/* MedMij — base element defaults (opt-in, lightweight). */
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-body-size);
+  line-height: var(--leading-normal);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: var(--font-h1-size); font-weight: var(--weight-bold); }
+h2 { font-size: var(--font-h2-size); font-weight: var(--weight-bold); }
+h3 { font-size: var(--font-h3-size); font-weight: var(--weight-semibold); }
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* WCAG 2.2 — 2.4.7 / 2.4.11 visible focus. A high-contrast ring on any interactive element, offset so it stays visible on coloured surfaces too. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+::selection { background: var(--green-30); color: var(--ink); }

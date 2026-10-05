@@ -1,0 +1,90 @@
+/* MedMij — Colour tokens
+   Source: Merk- en huisstijlgids Stichting MedMij, augustus 2024 (p.9 Kleurpalet, p.17 Illustraties).
+   Primary palette = Blauw / Groen / Oranje / Grijs, each with 70/50/30/10% tints. */
+
+:root {
+  /* ----- Primary brand colours ----- */
+  --medmij-blue:   #384b96;  /* MedMij Blauw — PMS 2728, primary */
+  --medmij-green:  #4ab8a7;  /* MedMij Groen — PMS 3258 */
+  --medmij-orange: #f49835;  /* MedMij Oranje — PMS 2009 */
+  --medmij-gray:   #878787;  /* MedMij Grijs — Cool Gray 6 */
+
+  /* ----- Blue tints (70 / 50 / 30 / 10 %) ----- */
+  --blue-70: #7481b6;
+  --blue-50: #9ca5ca;
+  --blue-30: #c3c9df;
+  --blue-10: #ebedf5;
+
+  /* ----- Green tints ----- */
+  --green-70: #80cdc1;
+  --green-50: #a4dcd3;
+  --green-30: #c9eae4;
+  --green-10: #edf8f6;
+
+  /* ----- Orange tints ----- */
+  --orange-70: #f7b771;
+  --orange-50: #f9cb9a;
+  --orange-30: #fce0c2;
+  --orange-10: #fef5eb;
+
+  /* ----- Gray tints ----- */
+  --gray-70: #a3a5a8;
+  --gray-50: #bcbdc0;
+  --gray-30: #d5d6d8;
+  --gray-10: #f1f1f2;
+
+  /* ----- Neutrals ----- */
+  --white:   #ffffff;
+  --black:   #1c1c1e;
+  --ink:     #2a2d36;   /* default text on light — blue-leaning near-black */
+
+  /* ----- Illustration accent palette (p.17) — for illustration art only ----- */
+  --illus-teal-deep: #2b6b7d;
+  --illus-cyan:      #00b6be;
+  --illus-blue:      #6bbacc;
+  --illus-magenta:   #e50040;
+  --illus-mist:      #c2e3e8;
+
+  /* ===== Semantic aliases ===== */
+  --color-primary:        var(--medmij-blue);
+  --color-primary-hover:  #2f3f80;   /* blue darkened ~10% for hover */
+  --color-primary-active: #283570;   /* blue darkened ~18% for press */
+  --color-accent:         var(--medmij-green);
+  --color-accent-hover:   #3ea596;
+  --color-accent-strong:       #2b7d72;   /* WCAG AA: white text on green (4.9:1) — use for solid buttons & green text */
+  --color-accent-strong-hover: #24695f;
+  --color-highlight:      var(--medmij-orange);
+  --color-highlight-hover:#e6892a;
+
+  /* Accessibility */
+  --focus-ring:        #384b96;   /* MedMij Blauw — 8:1 on white */
+  --focus-ring-offset: 2px;
+
+  /* Text */
+  --text-strong:   var(--ink);
+  --text-body:     #3a3d45;
+  --text-muted:    #6a6a6a;   /* accessible grey — 5.4:1 on white, 4.8:1 on --surface-subtle (AA on both). Brand grey #878787 stays --medmij-gray for non-text use */
+  --text-on-color: var(--white);
+  --text-link:     var(--medmij-blue);
+
+  /* Surfaces */
+  --surface-page:    var(--white);
+  --surface-subtle:  var(--gray-10);
+  --surface-card:    var(--white);
+  --surface-blue:    var(--blue-10);
+  --surface-green:   var(--green-10);
+  --surface-orange:  var(--orange-10);
+  --surface-invert:  var(--medmij-blue);
+
+  /* Borders & lines */
+  --border-subtle:  var(--gray-30);
+  --border-default: var(--gray-50);
+  --border-interactive: #818387;   /* WCAG 2.2 SC 1.4.11: perceivable boundary of form controls — 3.8:1 on white, 3.4:1 on --surface-subtle. Use for input/textarea/select borders, NOT decorative dividers */
+  --border-strong:  var(--medmij-blue);
+
+  /* Status (derived from brand palette) */
+  --status-success: var(--medmij-green);
+  --status-info:    var(--medmij-blue);
+  --status-warning: var(--medmij-orange);
+  --status-danger:  #d2354b;   /* derived from illustration magenta, darkened for UI */
+}
