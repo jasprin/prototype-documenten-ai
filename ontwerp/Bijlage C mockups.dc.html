@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/medmij-design-system-0165d5c7-07d8-4630-9d09-fa1086300c17/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/medmij-design-system-0165d5c7-07d8-4630-9d09-fa1086300c17/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/medmij-design-system-0165d5c7-07d8-4630-9d09-fa1086300c17/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/medmij-design-system-0165d5c7-07d8-4630-9d09-fa1086300c17/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/medmij-design-system-0165d5c7-07d8-4630-9d09-fa1086300c17/tokens/base.css">
+  <link rel="stylesheet" href="_ds/medmij-design-system-0165d5c7-07d8-4630-9d09-fa1086300c17/styles.css">
+  <script src="_ds/medmij-design-system-0165d5c7-07d8-4630-9d09-fa1086300c17/_ds_bundle.js"></script>
+  <script src="https://unpkg.com/lucide@0.417.0/dist/umd/lucide.js"></script>
+  <style>
+    body { margin: 0; background: var(--gray-10); }
+    a { color: var(--text-link); text-decoration: none; }
+    a:hover { color: var(--color-primary-hover); text-decoration: underline; }
+  </style>
+</helmet>
+
+<section data-screen-label="Beeld 1" style="width: 1440px; padding: 40px 0 64px; margin: 0 auto; font-family: var(--font-sans);">
+  <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 40px 16px;">
+    <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted);">Beeld 1</span>
+    <span style="font-size: var(--text-md); color: var(--text-body);">Metadatering — huidige situatie</span>
+  </div>
+
+  <div style="width: 1440px; height: 988px; background: var(--white); display: flex; overflow: hidden; box-shadow: var(--shadow-card);">
+
+    <aside style="width: 264px; flex: none; background: var(--white); border-right: 1px solid var(--gray-10); display: flex; flex-direction: column; padding: 22px 16px; gap: 24px; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 9px; padding: 2px 8px 0;">
+        <span style="width: 26px; height: 26px; border-radius: 8px; background: var(--medmij-blue); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 14px; font-weight: var(--weight-bold);">Z</span>
+        <span style="font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--medmij-blue); letter-spacing: var(--tracking-tight);">Mijn Zorgdossier</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 2px;">
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i>Overzicht
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="pill" style="width: 20px; height: 20px;"></i>Medicatie
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="activity" style="width: 20px; height: 20px;"></i>Metingen
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--medmij-blue); background: var(--blue-10);">
+          <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>Documenten
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="hospital" style="width: 20px; height: 20px;"></i>Zorgaanbieders
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="share-2" style="width: 20px; height: 20px;"></i>Delen &amp; toestemming
+        </button>
+      </nav>
+
+      <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 2px; border-top: 1px solid var(--gray-10);">
+        <x-import component-from-global-scope="DesignSystem_0165d5.Avatar" name="Sanne de Vries" tone="green" size="{{ 38 }}" hint-size="38px,38px"></x-import>
+        <span style="line-height: 1.3; display: block;">
+          <span style="display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Sanne de Vries</span>
+        </span>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 32px 32px 0; box-sizing: border-box;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
+        <div>
+          <h1 style="margin: 0; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">Documenten</h1>
+          <p style="margin: 6px 0 0; font-size: var(--text-sm); color: var(--text-muted);">Alle documenten van je zorgaanbieders</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: var(--text-sm); color: var(--text-muted);">
+          <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i>
+          <span>Laatst bijgewerkt 15-03-2026, 09:12</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; margin: 22px 0 18px;">
+        <label style="position: relative; display: flex; align-items: center; width: 320px;">
+          <i data-lucide="search" style="width: 18px; height: 18px; position: absolute; left: 13px; color: var(--text-muted);"></i>
+          <input type="text" placeholder="Zoek in documenten" style="width: 100%; box-sizing: border-box; font-family: var(--font-sans); font-size: var(--text-base); color: var(--text-strong); background: var(--white); border: 1.5px solid var(--border-interactive); border-radius: var(--radius-sm); padding: 10px 14px 10px 38px; min-height: 44px; outline: none;">
+        </label>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--text-body); background: var(--white);">Documentsoort<i data-lucide="chevron-down" style="width: 15px; height: 15px; color: var(--text-muted);"></i></span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--text-body); background: var(--white);">Zorgorganisatie<i data-lucide="chevron-down" style="width: 15px; height: 15px; color: var(--text-muted);"></i></span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--text-body); background: var(--white);">Gemaakt door<i data-lucide="chevron-down" style="width: 15px; height: 15px; color: var(--text-muted);"></i></span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--text-body); background: var(--white);">Gemaakt op: alle periodes<i data-lucide="chevron-down" style="width: 15px; height: 15px; color: var(--text-muted);"></i></span>
+      </div>
+
+      <div style="flex: 1; min-height: 0; border: 1px solid var(--gray-10); border-bottom: none; border-radius: var(--radius-md) var(--radius-md) 0 0; background: var(--white); display: flex; flex-direction: column; overflow: hidden; position: relative;">
+        <div style="display: grid; grid-template-columns: 284px 288px 104px 192px 124px; column-gap: 16px; align-items: center; padding: 0 20px; height: 44px; border-bottom: 1px solid var(--border-subtle); background: var(--white);">
+          <span style="display: flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);">Document</span>
+          <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);">Documentsoort</span>
+          <span style="display: flex; align-items: center; gap: 5px; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Gemaakt op<i data-lucide="arrow-down" style="width: 14px; height: 14px;"></i></span>
+          <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);">Zorgorganisatie</span>
+          <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);">Gemaakt door</span>
+        </div>
+
+        <div style="flex: 1; min-height: 0; overflow: hidden;">
+          <sc-for list="{{ rows }}" as="row" hint-placeholder-count="15">
+            <div style="display: grid; grid-template-columns: 284px 288px 104px 192px 124px; column-gap: 16px; align-items: center; padding: 0 20px; height: 52px; border-bottom: 1px solid var(--gray-10);">
+              <span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-link);">{{ row.titel }}</span>
+              <span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-body);">{{ row.soort }}</span>
+              <span style="font-size: var(--text-base); color: var(--text-body);">{{ row.datum }}</span>
+              <span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-body);">{{ row.organisatie }}</span>
+              <span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-body);">{{ row.verlener }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="position: absolute; top: 48px; right: 4px; width: 6px; height: 520px; border-radius: 999px; background: var(--gray-30);"></div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<section data-screen-label="Beeld 2" style="width: 1440px; padding: 40px 0 64px; margin: 0 auto; font-family: var(--font-sans);">
+  <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 40px 16px;">
+    <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted);">Beeld 2</span>
+    <span style="font-size: var(--text-md); color: var(--text-body);">Metadatering — gewenste situatie</span>
+  </div>
+
+  <div style="width: 1440px; height: 1043px; background: var(--white); display: flex; overflow: hidden; box-shadow: var(--shadow-card);">
+
+    <aside style="width: 264px; flex: none; background: var(--white); border-right: 1px solid var(--gray-10); display: flex; flex-direction: column; padding: 22px 16px; gap: 24px; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 9px; padding: 2px 8px 0;">
+        <span style="width: 26px; height: 26px; border-radius: 8px; background: var(--medmij-blue); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 14px; font-weight: var(--weight-bold);">Z</span>
+        <span style="font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--medmij-blue); letter-spacing: var(--tracking-tight);">Mijn Zorgdossier</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 2px;">
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i>Overzicht
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="pill" style="width: 20px; height: 20px;"></i>Medicatie
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="activity" style="width: 20px; height: 20px;"></i>Metingen
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--medmij-blue); background: var(--blue-10);">
+          <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>Documenten
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="hospital" style="width: 20px; height: 20px;"></i>Zorgaanbieders
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="share-2" style="width: 20px; height: 20px;"></i>Delen &amp; toestemming
+        </button>
+      </nav>
+
+      <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 2px; border-top: 1px solid var(--gray-10);">
+        <x-import component-from-global-scope="DesignSystem_0165d5.Avatar" name="Sanne de Vries" tone="green" size="{{ 38 }}" hint-size="38px,38px"></x-import>
+        <span style="line-height: 1.3; display: block;">
+          <span style="display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Sanne de Vries</span>
+        </span>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 32px 32px 0; box-sizing: border-box;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
+        <div>
+          <h1 style="margin: 0; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">Documenten</h1>
+          <p style="margin: 6px 0 0; font-size: var(--text-sm); color: var(--text-muted);">Alle documenten van je zorgaanbieders</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; font-size: var(--text-sm); color: var(--text-muted);">
+          <i data-lucide="refresh-cw" style="width: 16px; height: 16px;"></i>
+          <span>Laatst bijgewerkt 15-03-2026, 09:12</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; margin: 22px 0 18px; position: relative; z-index: 2;">
+        <label style="position: relative; display: flex; align-items: center; width: 320px;">
+          <i data-lucide="search" style="width: 18px; height: 18px; position: absolute; left: 13px; color: var(--text-muted);"></i>
+          <input type="text" placeholder="Zoek in documenten" style="width: 100%; box-sizing: border-box; font-family: var(--font-sans); font-size: var(--text-base); color: var(--text-strong); background: var(--white); border: 1.5px solid var(--border-interactive); border-radius: var(--radius-sm); padding: 10px 14px 10px 38px; min-height: 44px; outline: none;">
+        </label>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--text-body); background: var(--white);">Documentsoort<i data-lucide="chevron-down" style="width: 15px; height: 15px; color: var(--text-muted);"></i></span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--text-body); background: var(--white);">Zorgorganisatie<i data-lucide="chevron-down" style="width: 15px; height: 15px; color: var(--text-muted);"></i></span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--text-body); background: var(--white);">Gemaakt door<i data-lucide="chevron-down" style="width: 15px; height: 15px; color: var(--text-muted);"></i></span>
+        <span style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 1px solid var(--border-subtle); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--text-body); background: var(--white);">Gemaakt op: alle periodes<i data-lucide="chevron-down" style="width: 15px; height: 15px; color: var(--text-muted);"></i></span>
+      </div>
+
+      <div style="flex: 1; min-height: 0; border: 1px solid var(--gray-10); border-bottom: none; border-radius: var(--radius-md) var(--radius-md) 0 0; background: var(--white); display: flex; flex-direction: column; overflow: hidden; position: relative;">
+        <div style="display: grid; grid-template-columns: 284px 288px 104px 192px 124px; column-gap: 16px; align-items: center; padding: 0 20px; height: 44px; border-bottom: 1px solid var(--border-subtle); background: var(--white);">
+          <span style="display: flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);">Document</span>
+          <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);">Documentsoort</span>
+          <span style="display: flex; align-items: center; gap: 5px; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Gemaakt op<i data-lucide="arrow-down" style="width: 14px; height: 14px;"></i></span>
+          <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);">Zorgorganisatie</span>
+          <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-body);">Gemaakt door</span>
+        </div>
+
+        <div style="flex: 1; min-height: 0; overflow: hidden;">
+          <sc-for list="{{ rows2 }}" as="row" hint-placeholder-count="14">
+            <div style="display: grid; grid-template-columns: 284px 288px 104px 192px 124px; column-gap: 16px; align-items: center; padding: 0 20px; height: 52px; border-bottom: 1px solid var(--gray-10);">
+              <span style="min-width: 0; line-height: 1.25;">
+                <span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-link);">{{ row.titel }}</span>
+                <sc-if value="{{ row.annotatie }}" hint-placeholder-val="{{ false }}">
+                  <span style="display: block; font-size: var(--text-xs); color: var(--text-muted); border-bottom: 1px dotted var(--gray-50); width: fit-content;">{{ row.annotatie }}</span>
+                </sc-if>
+              </span>
+              <span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-body);">{{ row.soort }}</span>
+              <span style="font-size: var(--text-base); color: var(--text-body);">{{ row.datum }}</span>
+              <span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-body);">{{ row.organisatie }}</span>
+              <span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-body);">{{ row.verlener }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="position: absolute; top: 258px; left: 20px; width: 248px; background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); box-shadow: var(--shadow-md); padding: 10px 14px; font-size: var(--text-sm); color: var(--text-body); line-height: var(--leading-normal);">
+          <span style="position: absolute; top: -6px; left: 22px; width: 10px; height: 10px; transform: rotate(45deg); background: var(--white); border-left: 1px solid var(--border-subtle); border-top: 1px solid var(--border-subtle);"></span>
+          <span style="display: block; color: var(--text-muted); font-size: var(--text-xs);">Titel zoals de bron die levert</span>
+          <span style="display: block; color: var(--text-strong);">Healthcare communication document</span>
+        </div>
+      </div>
+
+      <div style="padding: 14px 20px 20px; font-size: var(--text-sm); color: var(--text-muted);">
+        Bij een afgeleide titel kun je de titel zoals de bron die levert bekijken. Het document zelf verandert niet.
+      </div>
+    </main>
+  </div>
+</section>
+
+<section data-screen-label="Beeld 3" style="width: 1440px; padding: 40px 0 64px; margin: 0 auto; font-family: var(--font-sans);">
+  <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 40px 16px;">
+    <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted);">Beeld 3</span>
+    <span style="font-size: var(--text-md); color: var(--text-body);">Uitleg in begrijpelijke taal — huidige situatie</span>
+  </div>
+
+  <div style="width: 1440px; height: 988px; background: var(--white); display: flex; overflow: hidden; box-shadow: var(--shadow-card);">
+
+    <aside style="width: 264px; flex: none; background: var(--white); border-right: 1px solid var(--gray-10); display: flex; flex-direction: column; padding: 22px 16px; gap: 24px; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 9px; padding: 2px 8px 0;">
+        <span style="width: 26px; height: 26px; border-radius: 8px; background: var(--medmij-blue); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 14px; font-weight: var(--weight-bold);">Z</span>
+        <span style="font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--medmij-blue); letter-spacing: var(--tracking-tight);">Mijn Zorgdossier</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 2px;">
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i>Overzicht
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="pill" style="width: 20px; height: 20px;"></i>Medicatie
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="activity" style="width: 20px; height: 20px;"></i>Metingen
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--medmij-blue); background: var(--blue-10);">
+          <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>Documenten
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="hospital" style="width: 20px; height: 20px;"></i>Zorgaanbieders
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="share-2" style="width: 20px; height: 20px;"></i>Delen &amp; toestemming
+        </button>
+      </nav>
+
+      <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 2px; border-top: 1px solid var(--gray-10);">
+        <x-import component-from-global-scope="DesignSystem_0165d5.Avatar" name="Sanne de Vries" tone="green" size="{{ 38 }}" hint-size="38px,38px"></x-import>
+        <span style="line-height: 1.3; display: block;">
+          <span style="display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Sanne de Vries</span>
+        </span>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 28px 32px 0; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); color: var(--text-muted);">
+        <span style="color: var(--text-link);">Documenten</span>
+        <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+        <span>Pathology report</span>
+      </div>
+
+      <h1 style="margin: 10px 0 18px; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">Pathology report</h1>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 356px); column-gap: 22px; row-gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--gray-10);">
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Document</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathology report</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Documentsoort</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathology report</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Gemaakt op</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">26-02-2026</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Zorgorganisatie</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Palga</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Gemaakt door</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-body);">&ndash;</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Groep</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathology study</span>
+        </span>
+        <span style="display: block; grid-column: 1 / -1;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Achtergrond</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Histopathologisch onderzoek, aangevraagd tijdens poliklinisch consult MDL</span>
+        </span>
+      </div>
+
+      <div style="flex: 1; min-height: 0; margin-top: 22px; background: var(--gray-30); display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius-sm) var(--radius-sm) 0 0;">
+        <div style="flex: none; height: 52px; background: var(--surface-subtle); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; padding: 0 16px;">
+          <span style="font-size: var(--text-sm); color: var(--text-body);">Pagina 1 van 3</span>
+          <span style="display: flex; align-items: center; gap: 4px;">
+            <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="zoom-out" style="width: 19px; height: 19px;"></i></span>
+            <span style="font-size: var(--text-sm); color: var(--text-body); min-width: 46px; text-align: center;">100%</span>
+            <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="zoom-in" style="width: 19px; height: 19px;"></i></span>
+            <span style="width: 1px; height: 24px; background: var(--border-subtle); margin: 0 8px;"></span>
+            <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="download" style="width: 19px; height: 19px;"></i></span>
+          </span>
+        </div>
+
+        <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; justify-content: center; padding-top: 24px; position: relative;">
+          <div style="width: 680px; flex: none; background: var(--white); box-shadow: var(--shadow-md); padding: 44px 56px; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 12.5px; line-height: 1.45; color: #1f1f1f;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1.5px solid #1f1f1f; padding-bottom: 8px;">
+              <span style="display: block;">
+                <span style="display: block; font-size: 15px; font-weight: 700; letter-spacing: 0.02em;">Palga &ndash; Pathologisch-Anatomisch Laboratorium</span>
+                <span style="display: block; font-size: 11px; color: #444;">Afdeling Pathologie &middot; Postbus 2412, 3500 GK Utrecht &middot; T 030 &ndash; 000 00 00</span>
+              </span>
+              <span style="display: block; font-size: 11px; text-align: right; color: #444;">
+                <span style="display: block;">Pagina 1/3</span>
+                <span style="display: block;">T26-04871</span>
+              </span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 22px; row-gap: 2px; margin-top: 14px; font-size: 11.5px;">
+              <span><strong>Patiënt:</strong> Vries, S. de (vrouw)</span>
+              <span><strong>Aanvrager:</strong> dr. S. Wiersma, MDL</span>
+              <span><strong>Geb.datum:</strong> 12-07-1968</span>
+              <span><strong>Aanvraagnr.:</strong> 26-AV-11 942</span>
+              <span><strong>Ontvangen:</strong> 20-02-2026</span>
+              <span><strong>Afgerond:</strong> 26-02-2026</span>
+              <span><strong>Materiaal:</strong> biopten colon descendens (3x), colon sigmoideum (2x)</span>
+              <span><strong>PA-nummer:</strong> T26-04871</span>
+            </div>
+
+            <p style="margin: 16px 0 10px;">Geachte collega,</p>
+
+            <p style="margin: 0 0 10px; text-align: justify;">Naar aanleiding van uw aanvraag d.d. 20-02-2026 ontving ik van bovengenoemde patiënt vijf biopten, ingezonden in gebufferde formaline 4%, met als klinische vraagstelling: chronische diarree, differentiaaldiagnostisch IBD versus microscopische colitis. Onderstaand mijn bevindingen.</p>
+
+            <p style="margin: 0 0 4px; font-weight: 700; letter-spacing: 0.04em; font-size: 11.5px;">MACROSCOPIE</p>
+            <p style="margin: 0 0 10px; text-align: justify;">A. Drie fragmenten mucosa, grijsbruin, elastisch, diameter respectievelijk 0,3, 0,4 en 0,4 cm. B. Twee fragmenten mucosa, grijsbruin, diameter 0,3 en 0,5 cm. Geheel ingesloten in twee blokjes, A1 en B1. Coupes: HE, PAS-D, CD3, CD20, en op indicatie CK20.</p>
+
+            <p style="margin: 0 0 4px; font-weight: 700; letter-spacing: 0.04em; font-size: 11.5px;">MICROSCOPIE</p>
+            <p style="margin: 0 0 8px; text-align: justify;">A. Colonmucosa met behouden architectuur, geen crypt-distorsie of crypt-atrofie. In de lamina propria een licht toegenomen, overwegend mononucleair infiltraat met plaatselijk enkele eosinofiele granulocyten (max. 12/HPF). Subepitheliaal een verbrede, homogene, eosinofiele collageenband tot circa 18 µm (normaal &lt; 10 µm), PAS-D positief, met focale losliggende oppervlakkige epitheliale strip-off. Intra-epitheliale lymfocytose is beperkt (circa 9/100 epitheliale cellen; CD3+). Geen cryptitis, geen crypt-abcessen, geen granulomen, geen dysplasie. Geen aanwijzingen voor viraal cytopathisch effect.</p>
+            <p style="margin: 0 0 10px; text-align: justify;">B. Sigmoïdmucosa met vergelijkbaar beeld, doch de collageenband is hier minder uitgesproken (circa 11&ndash;13 µm), focaal op de toppen van de plicae. Overig onveranderd. Muscularis mucosae niet in de coupe. Geen intestinale metaplasie, geen micro-organismen aantoonbaar bij PAS-D-kleuring.</p>
+
+            <p style="margin: 0 0 4px; font-weight: 700; letter-spacing: 0.04em; font-size: 11.5px;">CONCLUSIE</p>
+            <p style="margin: 0 0 10px; text-align: justify;">A + B. Biopten colon descendens en sigmoideum: histologisch beeld passend bij collagene colitis (microscopische colitis, collageen subtype), met een subepitheliale collageenband tot 18 µm en een mild chronisch ontstekingsinfiltraat in de lamina propria. Geen aanwijzingen voor IBD in engere zin, geen granulomateuze ontsteking, geen epitheliale dysplasie of maligniteit in het ingezonden materiaal.</p>
+
+            <p style="margin: 0 0 10px; text-align: justify;">Correlatie met het klinische beeld en de medicatieanamnese (o.a. NSAID's, PPI, SSRI) is aan te bevelen, aangezien deze in de literatuur geassocieerd zijn met het genoemde histologische substraat. Bij persisterende klachten na staken van eventuele verdachte medicatie kan herbiopsie op termijn worden overwogen.</p>
+
+            <p style="margin: 0 0 2px;">Met collegiale hoogachting,</p>
+            <p style="margin: 0;">dr. A.M. Terpstra, patholoog (KNMG-reg. 19 04 887)</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<section data-screen-label="Beeld 4" style="width: 1440px; padding: 40px 0 64px; margin: 0 auto; font-family: var(--font-sans);">
+  <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 40px 16px;">
+    <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted);">Beeld 4</span>
+    <span style="font-size: var(--text-md); color: var(--text-body);">Uitleg in begrijpelijke taal — gewenste situatie</span>
+  </div>
+
+  <div style="width: 1440px; height: 1048px; background: var(--white); display: flex; overflow: hidden; box-shadow: var(--shadow-card);">
+
+    <aside style="width: 264px; flex: none; background: var(--white); border-right: 1px solid var(--gray-10); display: flex; flex-direction: column; padding: 22px 16px; gap: 24px; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 9px; padding: 2px 8px 0;">
+        <span style="width: 26px; height: 26px; border-radius: 8px; background: var(--medmij-blue); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 14px; font-weight: var(--weight-bold);">Z</span>
+        <span style="font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--medmij-blue); letter-spacing: var(--tracking-tight);">Mijn Zorgdossier</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 2px;">
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i>Overzicht
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="pill" style="width: 20px; height: 20px;"></i>Medicatie
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="activity" style="width: 20px; height: 20px;"></i>Metingen
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--medmij-blue); background: var(--blue-10);">
+          <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>Documenten
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="hospital" style="width: 20px; height: 20px;"></i>Zorgaanbieders
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="share-2" style="width: 20px; height: 20px;"></i>Delen &amp; toestemming
+        </button>
+      </nav>
+
+      <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 2px; border-top: 1px solid var(--gray-10);">
+        <x-import component-from-global-scope="DesignSystem_0165d5.Avatar" name="Sanne de Vries" tone="green" size="{{ 38 }}" hint-size="38px,38px"></x-import>
+        <span style="line-height: 1.3; display: block;">
+          <span style="display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Sanne de Vries</span>
+        </span>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 28px 32px 0; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); color: var(--text-muted);">
+        <span style="color: var(--text-link);">Documenten</span>
+        <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+        <span>Pathologieverslag</span>
+      </div>
+
+      <h1 style="margin: 10px 0 18px; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">Pathologieverslag</h1>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 356px); column-gap: 22px; row-gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--gray-10);">
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Document</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieverslag</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Documentsoort</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieverslag</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Gemaakt op</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">26-02-2026</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Zorgorganisatie</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Palga</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Gemaakt door</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-body);">&ndash;</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Groep</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieonderzoek</span>
+        </span>
+        <span style="display: block; grid-column: 1 / -1;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Achtergrond</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Histopathologisch onderzoek, aangevraagd tijdens poliklinisch consult MDL</span>
+        </span>
+      </div>
+
+      <div style="flex: 1; min-height: 0; margin-top: 22px; display: grid; grid-template-columns: 548px 548px; column-gap: 16px;">
+
+        <div style="min-height: 0; background: var(--gray-30); display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius-sm) var(--radius-sm) 0 0;">
+          <div style="flex: none; height: 52px; background: var(--surface-subtle); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; padding: 0 12px;">
+            <span style="font-size: var(--text-sm); color: var(--text-body);">Pagina 1 van 3</span>
+            <span style="display: flex; align-items: center; gap: 2px;">
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="zoom-out" style="width: 19px; height: 19px;"></i></span>
+              <span style="font-size: var(--text-sm); color: var(--text-body); min-width: 42px; text-align: center;">75%</span>
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="zoom-in" style="width: 19px; height: 19px;"></i></span>
+              <span style="width: 1px; height: 24px; background: var(--border-subtle); margin: 0 6px;"></span>
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="download" style="width: 19px; height: 19px;"></i></span>
+            </span>
+          </div>
+
+          <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; justify-content: center; padding-top: 16px;">
+            <div style="width: 508px; flex: none; background: var(--white); box-shadow: var(--shadow-md); padding: 32px 40px; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 10px; line-height: 1.45; color: #1f1f1f;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1.5px solid #1f1f1f; padding-bottom: 6px;">
+                <span style="display: block;">
+                  <span style="display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.02em;">Palga &ndash; Pathologisch-Anatomisch Laboratorium</span>
+                  <span style="display: block; font-size: 9px; color: #444;">Afdeling Pathologie &middot; Postbus 2412, 3500 GK Utrecht &middot; T 030 &ndash; 000 00 00</span>
+                </span>
+                <span style="display: block; font-size: 9px; text-align: right; color: #444;">
+                  <span style="display: block;">Pagina 1/3</span>
+                  <span style="display: block;">T26-04871</span>
+                </span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; row-gap: 1px; margin-top: 10px; font-size: 9.5px;">
+                <span><strong>Patiënt:</strong> Vries, S. de (vrouw)</span>
+                <span><strong>Aanvrager:</strong> dr. S. Wiersma, MDL</span>
+                <span><strong>Geb.datum:</strong> 12-07-1968</span>
+                <span><strong>Aanvraagnr.:</strong> 26-AV-11 942</span>
+                <span><strong>Ontvangen:</strong> 20-02-2026</span>
+                <span><strong>Afgerond:</strong> 26-02-2026</span>
+                <span><strong>Materiaal:</strong> biopten colon descendens (3x), sigmoideum (2x)</span>
+                <span><strong>PA-nummer:</strong> T26-04871</span>
+              </div>
+
+              <p style="margin: 12px 0 8px;">Geachte collega,</p>
+
+              <p style="margin: 0 0 8px; text-align: justify;">Naar aanleiding van uw aanvraag d.d. 20-02-2026 ontving ik van bovengenoemde patiënt vijf biopten, ingezonden in gebufferde formaline 4%, met als klinische vraagstelling: chronische diarree, differentiaaldiagnostisch IBD versus microscopische colitis. Onderstaand mijn bevindingen.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">MACROSCOPIE</p>
+              <p style="margin: 0 0 8px; text-align: justify;">A. Drie fragmenten mucosa, grijsbruin, elastisch, diameter respectievelijk 0,3, 0,4 en 0,4 cm. B. Twee fragmenten mucosa, grijsbruin, diameter 0,3 en 0,5 cm. Geheel ingesloten in twee blokjes, A1 en B1. Coupes: HE, PAS-D, CD3, CD20, en op indicatie CK20.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">MICROSCOPIE</p>
+              <p style="margin: 0 0 6px; text-align: justify;">A. Colonmucosa met behouden architectuur, geen crypt-distorsie of crypt-atrofie. In de lamina propria een licht toegenomen, overwegend mononucleair infiltraat met plaatselijk enkele eosinofiele granulocyten (max. 12/HPF). <span style="background: var(--gray-30); box-shadow: 0 0 0 2px var(--gray-30);">Subepitheliaal een verbrede, homogene, eosinofiele collageenband tot circa 18 µm (normaal &lt; 10 µm), PAS-D positief, met focale losliggende oppervlakkige epitheliale strip-off.</span> Intra-epitheliale lymfocytose is beperkt (circa 9/100 epitheliale cellen; CD3+). Geen cryptitis, geen crypt-abcessen, geen granulomen, geen dysplasie.</p>
+              <p style="margin: 0 0 8px; text-align: justify;">B. Sigmoïdmucosa met vergelijkbaar beeld, doch de collageenband is hier minder uitgesproken (circa 11&ndash;13 µm), focaal op de toppen van de plicae. Overig onveranderd. Muscularis mucosae niet in de coupe.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">CONCLUSIE</p>
+              <p style="margin: 0 0 8px; text-align: justify;">A + B. Biopten colon descendens en sigmoideum: histologisch beeld passend bij collagene colitis (microscopische colitis, collageen subtype), met een subepitheliale collageenband tot 18 µm en een mild chronisch ontstekingsinfiltraat in de lamina propria. Geen aanwijzingen voor IBD in engere zin, geen granulomateuze ontsteking, geen epitheliale dysplasie of maligniteit in het ingezonden materiaal.</p>
+
+              <p style="margin: 0 0 8px; text-align: justify;">Correlatie met het klinische beeld en de medicatieanamnese (o.a. NSAID's, PPI, SSRI) is aan te bevelen, aangezien deze in de literatuur geassocieerd zijn met het genoemde histologische substraat.</p>
+
+              <p style="margin: 0 0 2px;">Met collegiale hoogachting,</p>
+              <p style="margin: 0;">dr. A.M. Terpstra, patholoog</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="min-height: 0; display: flex; flex-direction: column; border: 1px solid var(--gray-10); border-bottom: none; border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: var(--white); overflow: hidden;">
+          <div style="flex: none; padding: 18px 24px 14px; border-bottom: 1px solid var(--gray-10);">
+            <h2 style="margin: 0; font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--text-strong);">Uitleg in begrijpelijke taal</h2>
+            <p style="margin: 6px 0 0; font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal);">Deze uitleg helpt je het document te lezen. Het document van je zorgaanbieder is leidend. Wijs een alinea aan om te zien waar die in het document staat.</p>
+          </div>
+
+          <div style="flex: 1; min-height: 0; overflow: hidden; padding: 16px 24px 0; display: flex; flex-direction: column; gap: 12px;">
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Dit is de uitslag van een onderzoek aan stukjes weefsel uit je darm. De maag-darm-leverarts heeft dit onderzoek op 20 februari 2026 aangevraagd.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">De patholoog heeft vijf stukjes weefsel bekeken. Drie stukjes komen uit het dalende deel van de dikke darm en twee uit het laatste deel daarvan, de sigmoïde darm.</p>
+            <p style="margin: 0; padding: 10px 12px; margin-left: -12px; margin-right: -12px; border-radius: var(--radius-xs); background: var(--gray-30); font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Onder de microscoop is de darmwand normaal opgebouwd. In de bovenste laag zit een band van collageen, een soort bindweefsel. Die band is dikker dan normaal: tot 18 micrometer, terwijl minder dan 10 micrometer normaal is.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">In de darmwand is ook een lichte ontsteking te zien. Er zijn geen zweren gevonden, geen afwijkende cellen en geen kanker in het onderzochte weefsel.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">De conclusie in het verslag is collagene colitis: een ontsteking van de dikke darm waarbij de collageenband dikker is. Het verslag meldt geen aanwijzingen voor de ziekte van Crohn of colitis ulcerosa.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">De patholoog schrijft dat dit beeld ook bij bepaalde medicijnen kan horen, en dat de arts de uitslag samen met je klachten en je medicijnen bekijkt. Het verslag is op 26 februari 2026 geschreven door dr. A.M. Terpstra, patholoog.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<section data-screen-label="Beeld 5" style="width: 1440px; padding: 40px 0 64px; margin: 0 auto; font-family: var(--font-sans);">
+  <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 40px 16px;">
+    <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted);">Beeld 5</span>
+    <span style="font-size: var(--text-md); color: var(--text-body);">Vertaling — huidige situatie</span>
+  </div>
+
+  <div style="width: 1440px; height: 1048px; background: var(--white); display: flex; overflow: hidden; box-shadow: var(--shadow-card);">
+
+    <aside style="width: 264px; flex: none; background: var(--white); border-right: 1px solid var(--gray-10); display: flex; flex-direction: column; padding: 22px 16px; gap: 24px; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 9px; padding: 2px 8px 0;">
+        <span style="width: 26px; height: 26px; border-radius: 8px; background: var(--medmij-blue); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 14px; font-weight: var(--weight-bold);">Z</span>
+        <span style="font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--medmij-blue); letter-spacing: var(--tracking-tight);">Mijn Zorgdossier</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 2px;">
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i>Overzicht
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="pill" style="width: 20px; height: 20px;"></i>Medicatie
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="activity" style="width: 20px; height: 20px;"></i>Metingen
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--medmij-blue); background: var(--blue-10);">
+          <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>Documenten
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="hospital" style="width: 20px; height: 20px;"></i>Zorgaanbieders
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="share-2" style="width: 20px; height: 20px;"></i>Delen &amp; toestemming
+        </button>
+      </nav>
+
+      <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 2px; border-top: 1px solid var(--gray-10);">
+        <x-import component-from-global-scope="DesignSystem_0165d5.Avatar" name="Sanne de Vries" tone="green" size="{{ 38 }}" hint-size="38px,38px"></x-import>
+        <span style="line-height: 1.3; display: block;">
+          <span style="display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Sanne de Vries</span>
+        </span>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 28px 32px 0; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); color: var(--text-muted);">
+        <span style="color: var(--text-link);">Documenten</span>
+        <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+        <span>Pathologieverslag</span>
+      </div>
+
+      <h1 style="margin: 10px 0 18px; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">Pathologieverslag</h1>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 356px); column-gap: 22px; row-gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--gray-10);">
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Document</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieverslag</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Documentsoort</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieverslag</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Gemaakt op</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">26-02-2026</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Zorgorganisatie</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Palga</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Gemaakt door</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-body);">&ndash;</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Groep</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieonderzoek</span>
+        </span>
+        <span style="display: block; grid-column: 1 / -1;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Achtergrond</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Histopathologisch onderzoek, aangevraagd tijdens poliklinisch consult MDL</span>
+        </span>
+      </div>
+
+      <div style="flex: 1; min-height: 0; margin-top: 22px; display: grid; grid-template-columns: 548px 548px; column-gap: 16px;">
+
+        <div style="min-height: 0; background: var(--gray-30); display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius-sm) var(--radius-sm) 0 0;">
+          <div style="flex: none; height: 52px; background: var(--surface-subtle); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; padding: 0 12px;">
+            <span style="font-size: var(--text-sm); color: var(--text-body);">Pagina 1 van 3</span>
+            <span style="display: flex; align-items: center; gap: 2px;">
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="zoom-out" style="width: 19px; height: 19px;"></i></span>
+              <span style="font-size: var(--text-sm); color: var(--text-body); min-width: 42px; text-align: center;">75%</span>
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="zoom-in" style="width: 19px; height: 19px;"></i></span>
+              <span style="width: 1px; height: 24px; background: var(--border-subtle); margin: 0 6px;"></span>
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="download" style="width: 19px; height: 19px;"></i></span>
+            </span>
+          </div>
+
+          <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; justify-content: center; padding-top: 16px;">
+            <div style="width: 508px; flex: none; background: var(--white); box-shadow: var(--shadow-md); padding: 32px 40px; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 10px; line-height: 1.45; color: #1f1f1f;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1.5px solid #1f1f1f; padding-bottom: 6px;">
+                <span style="display: block;">
+                  <span style="display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.02em;">Palga &ndash; Pathologisch-Anatomisch Laboratorium</span>
+                  <span style="display: block; font-size: 9px; color: #444;">Afdeling Pathologie &middot; Postbus 2412, 3500 GK Utrecht &middot; T 030 &ndash; 000 00 00</span>
+                </span>
+                <span style="display: block; font-size: 9px; text-align: right; color: #444;">
+                  <span style="display: block;">Pagina 1/3</span>
+                  <span style="display: block;">T26-04871</span>
+                </span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; row-gap: 1px; margin-top: 10px; font-size: 9.5px;">
+                <span><strong>Patiënt:</strong> Vries, S. de (vrouw)</span>
+                <span><strong>Aanvrager:</strong> dr. S. Wiersma, MDL</span>
+                <span><strong>Geb.datum:</strong> 12-07-1968</span>
+                <span><strong>Aanvraagnr.:</strong> 26-AV-11 942</span>
+                <span><strong>Ontvangen:</strong> 20-02-2026</span>
+                <span><strong>Afgerond:</strong> 26-02-2026</span>
+                <span><strong>Materiaal:</strong> biopten colon descendens (3x), sigmoideum (2x)</span>
+                <span><strong>PA-nummer:</strong> T26-04871</span>
+              </div>
+
+              <p style="margin: 12px 0 8px;">Geachte collega,</p>
+
+              <p style="margin: 0 0 8px; text-align: justify;">Naar aanleiding van uw aanvraag d.d. 20-02-2026 ontving ik van bovengenoemde patiënt vijf biopten, ingezonden in gebufferde formaline 4%, met als klinische vraagstelling: chronische diarree, differentiaaldiagnostisch IBD versus microscopische colitis. Onderstaand mijn bevindingen.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">MACROSCOPIE</p>
+              <p style="margin: 0 0 8px; text-align: justify;">A. Drie fragmenten mucosa, grijsbruin, elastisch, diameter respectievelijk 0,3, 0,4 en 0,4 cm. B. Twee fragmenten mucosa, grijsbruin, diameter 0,3 en 0,5 cm. Geheel ingesloten in twee blokjes, A1 en B1. Coupes: HE, PAS-D, CD3, CD20, en op indicatie CK20.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">MICROSCOPIE</p>
+              <p style="margin: 0 0 6px; text-align: justify;">A. Colonmucosa met behouden architectuur, geen crypt-distorsie of crypt-atrofie. In de lamina propria een licht toegenomen, overwegend mononucleair infiltraat met plaatselijk enkele eosinofiele granulocyten (max. 12/HPF). <span style="background: var(--gray-30); box-shadow: 0 0 0 2px var(--gray-30);">Subepitheliaal een verbrede, homogene, eosinofiele collageenband tot circa 18 µm (normaal &lt; 10 µm), PAS-D positief, met focale losliggende oppervlakkige epitheliale strip-off.</span> Intra-epitheliale lymfocytose is beperkt (circa 9/100 epitheliale cellen; CD3+). Geen cryptitis, geen crypt-abcessen, geen granulomen, geen dysplasie.</p>
+              <p style="margin: 0 0 8px; text-align: justify;">B. Sigmoïdmucosa met vergelijkbaar beeld, doch de collageenband is hier minder uitgesproken (circa 11&ndash;13 µm), focaal op de toppen van de plicae. Overig onveranderd. Muscularis mucosae niet in de coupe.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">CONCLUSIE</p>
+              <p style="margin: 0 0 8px; text-align: justify;">A + B. Biopten colon descendens en sigmoideum: histologisch beeld passend bij collagene colitis (microscopische colitis, collageen subtype), met een subepitheliale collageenband tot 18 µm en een mild chronisch ontstekingsinfiltraat in de lamina propria. Geen aanwijzingen voor IBD in engere zin, geen granulomateuze ontsteking, geen epitheliale dysplasie of maligniteit in het ingezonden materiaal.</p>
+
+              <p style="margin: 0 0 8px; text-align: justify;">Correlatie met het klinische beeld en de medicatieanamnese (o.a. NSAID's, PPI, SSRI) is aan te bevelen, aangezien deze in de literatuur geassocieerd zijn met het genoemde histologische substraat.</p>
+
+              <p style="margin: 0 0 2px;">Met collegiale hoogachting,</p>
+              <p style="margin: 0;">dr. A.M. Terpstra, patholoog</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="min-height: 0; display: flex; flex-direction: column; border: 1px solid var(--gray-10); border-bottom: none; border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: var(--white); overflow: hidden;">
+          <div style="flex: none; padding: 18px 24px 14px; border-bottom: 1px solid var(--gray-10);">
+            <h2 style="margin: 0; font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--text-strong);">Uitleg in begrijpelijke taal</h2>
+            <p style="margin: 6px 0 0; font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal);">Deze uitleg helpt je het document te lezen. Het document van je zorgaanbieder is leidend. Wijs een alinea aan om te zien waar die in het document staat.</p>
+          </div>
+
+          <div style="flex: 1; min-height: 0; overflow: hidden; padding: 16px 24px 0; display: flex; flex-direction: column; gap: 12px;">
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Dit is de uitslag van een onderzoek aan stukjes weefsel uit je darm. De maag-darm-leverarts heeft dit onderzoek op 20 februari 2026 aangevraagd.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">De patholoog heeft vijf stukjes weefsel bekeken. Drie stukjes komen uit het dalende deel van de dikke darm en twee uit het laatste deel daarvan, de sigmoïde darm.</p>
+            <p style="margin: 0; padding: 10px 12px; margin-left: -12px; margin-right: -12px; border-radius: var(--radius-xs); background: var(--gray-30); font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Onder de microscoop is de darmwand normaal opgebouwd. In de bovenste laag zit een band van collageen, een soort bindweefsel. Die band is dikker dan normaal: tot 18 micrometer, terwijl minder dan 10 micrometer normaal is.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">In de darmwand is ook een lichte ontsteking te zien. Er zijn geen zweren gevonden, geen afwijkende cellen en geen kanker in het onderzochte weefsel.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">De conclusie in het verslag is collagene colitis: een ontsteking van de dikke darm waarbij de collageenband dikker is. Het verslag meldt geen aanwijzingen voor de ziekte van Crohn of colitis ulcerosa.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">De patholoog schrijft dat dit beeld ook bij bepaalde medicijnen kan horen, en dat de arts de uitslag samen met je klachten en je medicijnen bekijkt. Het verslag is op 26 februari 2026 geschreven door dr. A.M. Terpstra, patholoog.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<section data-screen-label="Beeld 6" style="width: 1440px; padding: 40px 0 64px; margin: 0 auto; font-family: var(--font-sans);">
+  <div style="display: flex; align-items: baseline; gap: 12px; padding: 0 40px 16px;">
+    <span style="font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted);">Beeld 6</span>
+    <span style="font-size: var(--text-md); color: var(--text-body);">Vertaling — gewenste situatie</span>
+  </div>
+
+  <div style="width: 1440px; height: 1048px; background: var(--white); display: flex; overflow: hidden; box-shadow: var(--shadow-card);">
+
+    <aside style="width: 264px; flex: none; background: var(--white); border-right: 1px solid var(--gray-10); display: flex; flex-direction: column; padding: 22px 16px; gap: 24px; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 9px; padding: 2px 8px 0;">
+        <span style="width: 26px; height: 26px; border-radius: 8px; background: var(--medmij-blue); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 14px; font-weight: var(--weight-bold);">Z</span>
+        <span style="font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--medmij-blue); letter-spacing: var(--tracking-tight);">Mijn Zorgdossier</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 2px;">
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i>Overzicht
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="pill" style="width: 20px; height: 20px;"></i>Medicatie
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="activity" style="width: 20px; height: 20px;"></i>Metingen
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--medmij-blue); background: var(--blue-10);">
+          <i data-lucide="file-text" style="width: 20px; height: 20px;"></i>Documenten
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="hospital" style="width: 20px; height: 20px;"></i>Zorgaanbieders
+        </button>
+        <button style="display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: var(--radius-sm); border: none; cursor: pointer; text-align: left; width: 100%; font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--weight-regular); color: var(--text-body); background: transparent;">
+          <i data-lucide="share-2" style="width: 20px; height: 20px;"></i>Delen &amp; toestemming
+        </button>
+      </nav>
+
+      <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 2px; border-top: 1px solid var(--gray-10);">
+        <x-import component-from-global-scope="DesignSystem_0165d5.Avatar" name="Sanne de Vries" tone="green" size="{{ 38 }}" hint-size="38px,38px"></x-import>
+        <span style="line-height: 1.3; display: block;">
+          <span style="display: block; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--text-strong);">Sanne de Vries</span>
+        </span>
+      </div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 28px 32px 0; box-sizing: border-box;">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); color: var(--text-muted);">
+        <span style="color: var(--text-link);">Documenten</span>
+        <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+        <span>Pathologieverslag</span>
+      </div>
+
+      <h1 style="margin: 10px 0 18px; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">Pathologieverslag</h1>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 356px); column-gap: 22px; row-gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--gray-10);">
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Document</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieverslag</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Documentsoort</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieverslag</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Gemaakt op</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">26-02-2026</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Zorgorganisatie</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Palga</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Gemaakt door</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-body);">&ndash;</span>
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Groep</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Pathologieonderzoek</span>
+        </span>
+        <span style="display: block; grid-column: 1 / -1;">
+          <span style="display: block; font-size: var(--text-sm); color: var(--text-muted);">Achtergrond</span>
+          <span style="display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);">Histopathologisch onderzoek, aangevraagd tijdens poliklinisch consult MDL</span>
+        </span>
+      </div>
+
+      <div style="flex: 1; min-height: 0; margin-top: 22px; display: grid; grid-template-columns: 548px 548px; column-gap: 16px;">
+
+        <div style="min-height: 0; background: var(--gray-30); display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius-sm) var(--radius-sm) 0 0;">
+          <div style="flex: none; height: 52px; background: var(--surface-subtle); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; padding: 0 12px;">
+            <span style="font-size: var(--text-sm); color: var(--text-body);">Pagina 1 van 3</span>
+            <span style="display: flex; align-items: center; gap: 2px;">
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="zoom-out" style="width: 19px; height: 19px;"></i></span>
+              <span style="font-size: var(--text-sm); color: var(--text-body); min-width: 42px; text-align: center;">75%</span>
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="zoom-in" style="width: 19px; height: 19px;"></i></span>
+              <span style="width: 1px; height: 24px; background: var(--border-subtle); margin: 0 6px;"></span>
+              <span style="width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-body);"><i data-lucide="download" style="width: 19px; height: 19px;"></i></span>
+            </span>
+          </div>
+
+          <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; justify-content: center; padding-top: 16px;">
+            <div style="width: 508px; flex: none; background: var(--white); box-shadow: var(--shadow-md); padding: 32px 40px; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 10px; line-height: 1.45; color: #1f1f1f;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1.5px solid #1f1f1f; padding-bottom: 6px;">
+                <span style="display: block;">
+                  <span style="display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.02em;">Palga &ndash; Pathologisch-Anatomisch Laboratorium</span>
+                  <span style="display: block; font-size: 9px; color: #444;">Afdeling Pathologie &middot; Postbus 2412, 3500 GK Utrecht &middot; T 030 &ndash; 000 00 00</span>
+                </span>
+                <span style="display: block; font-size: 9px; text-align: right; color: #444;">
+                  <span style="display: block;">Pagina 1/3</span>
+                  <span style="display: block;">T26-04871</span>
+                </span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; row-gap: 1px; margin-top: 10px; font-size: 9.5px;">
+                <span><strong>Patiënt:</strong> Vries, S. de (vrouw)</span>
+                <span><strong>Aanvrager:</strong> dr. S. Wiersma, MDL</span>
+                <span><strong>Geb.datum:</strong> 12-07-1968</span>
+                <span><strong>Aanvraagnr.:</strong> 26-AV-11 942</span>
+                <span><strong>Ontvangen:</strong> 20-02-2026</span>
+                <span><strong>Afgerond:</strong> 26-02-2026</span>
+                <span><strong>Materiaal:</strong> biopten colon descendens (3x), sigmoideum (2x)</span>
+                <span><strong>PA-nummer:</strong> T26-04871</span>
+              </div>
+
+              <p style="margin: 12px 0 8px;">Geachte collega,</p>
+
+              <p style="margin: 0 0 8px; text-align: justify;">Naar aanleiding van uw aanvraag d.d. 20-02-2026 ontving ik van bovengenoemde patiënt vijf biopten, ingezonden in gebufferde formaline 4%, met als klinische vraagstelling: chronische diarree, differentiaaldiagnostisch IBD versus microscopische colitis. Onderstaand mijn bevindingen.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">MACROSCOPIE</p>
+              <p style="margin: 0 0 8px; text-align: justify;">A. Drie fragmenten mucosa, grijsbruin, elastisch, diameter respectievelijk 0,3, 0,4 en 0,4 cm. B. Twee fragmenten mucosa, grijsbruin, diameter 0,3 en 0,5 cm. Geheel ingesloten in twee blokjes, A1 en B1. Coupes: HE, PAS-D, CD3, CD20, en op indicatie CK20.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">MICROSCOPIE</p>
+              <p style="margin: 0 0 6px; text-align: justify;">A. Colonmucosa met behouden architectuur, geen crypt-distorsie of crypt-atrofie. In de lamina propria een licht toegenomen, overwegend mononucleair infiltraat met plaatselijk enkele eosinofiele granulocyten (max. 12/HPF). <span style="background: var(--gray-30); box-shadow: 0 0 0 2px var(--gray-30);">Subepitheliaal een verbrede, homogene, eosinofiele collageenband tot circa 18 µm (normaal &lt; 10 µm), PAS-D positief, met focale losliggende oppervlakkige epitheliale strip-off.</span> Intra-epitheliale lymfocytose is beperkt (circa 9/100 epitheliale cellen; CD3+). Geen cryptitis, geen crypt-abcessen, geen granulomen, geen dysplasie.</p>
+              <p style="margin: 0 0 8px; text-align: justify;">B. Sigmoïdmucosa met vergelijkbaar beeld, doch de collageenband is hier minder uitgesproken (circa 11&ndash;13 µm), focaal op de toppen van de plicae. Overig onveranderd. Muscularis mucosae niet in de coupe.</p>
+
+              <p style="margin: 0 0 3px; font-weight: 700; letter-spacing: 0.04em; font-size: 9.5px;">CONCLUSIE</p>
+              <p style="margin: 0 0 8px; text-align: justify;">A + B. Biopten colon descendens en sigmoideum: histologisch beeld passend bij collagene colitis (microscopische colitis, collageen subtype), met een subepitheliale collageenband tot 18 µm en een mild chronisch ontstekingsinfiltraat in de lamina propria. Geen aanwijzingen voor IBD in engere zin, geen granulomateuze ontsteking, geen epitheliale dysplasie of maligniteit in het ingezonden materiaal.</p>
+
+              <p style="margin: 0 0 8px; text-align: justify;">Correlatie met het klinische beeld en de medicatieanamnese (o.a. NSAID's, PPI, SSRI) is aan te bevelen, aangezien deze in de literatuur geassocieerd zijn met het genoemde histologische substraat.</p>
+
+              <p style="margin: 0 0 2px;">Met collegiale hoogachting,</p>
+              <p style="margin: 0;">dr. A.M. Terpstra, patholoog</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="min-height: 0; display: flex; flex-direction: column; border: 1px solid var(--gray-10); border-bottom: none; border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: var(--white); overflow: hidden;">
+          <div style="flex: none; padding: 18px 24px 14px; border-bottom: 1px solid var(--gray-10);">
+            <h2 style="margin: 0; font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--text-strong);">Anlaşılır dilde açıklama</h2>
+            <p style="margin: 6px 0 0; font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal);">Bu açıklama belgeyi okumanıza yardımcı olur. Sağlık kuruluşunuzun belgesi esastır. Bir paragrafın belgede nerede olduğunu görmek için paragrafın üzerine gelin.</p>
+          </div>
+
+          <div style="flex: 1; min-height: 0; overflow: hidden; padding: 16px 24px 0; display: flex; flex-direction: column; gap: 12px;">
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Bu, bağırsağınızdan alınan doku parçalarının inceleme sonucudur. Mide-bağırsak-karaciğer uzmanı bu incelemeyi 20 şubat 2026 tarihinde istedi.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Patolog beş doku parçasını inceledi. Üç parça kalın bağırsağın inen bölümünden, iki parça ise son bölümünden, yani sigmoid bağırsaktan alındı.</p>
+            <p style="margin: 0; padding: 10px 12px; margin-left: -12px; margin-right: -12px; border-radius: var(--radius-xs); background: var(--gray-30); font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Mikroskop altında bağırsak duvarının yapısı normal görünüyor. En üst tabakada bir tür bağ dokusu olan kollajenden oluşan bir bant var. Bu bant normalden kalın: 18 mikrometreye kadar, normalde 10 mikrometreden az olması gerekiyor.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Bağırsak duvarında hafif bir iltihap da görülüyor. İncelenen dokuda ülser, anormal hücre veya kanser bulunmadı.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Rapordaki sonuç kollajenli kolit: kollajen bandının kalınlaştığı, kalın bağırsakta görülen bir iltihap. Raporda Crohn hastalığı veya ülseratif kolit belirtisi bulunmadığı yazıyor.</p>
+            <p style="margin: 0; font-size: var(--text-base); color: var(--text-body); line-height: var(--leading-normal);">Patolog, bu görünümün bazı ilaçlarla da ilgili olabileceğini ve doktorun sonucu şikâyetlerinizle ve ilaçlarınızla birlikte değerlendireceğini yazıyor. Rapor 26 şubat 2026 tarihinde patolog dr. A.M. Terpstra tarafından yazıldı.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const EMPTY = '\u2013';
+
+const ROWS_1 = [
+  ['Ontslagbrief opname cardiologie', 'Ontslagbrief', '14-03-2026', 'Zuiderziekenhuis', 'J.X. van der Laan'],
+  ['Ontslagbrief cardiologie def', 'Ontslagbrief', '13-03-2026', 'Zuiderziekenhuis', 'J.X. van der Laan'],
+  ['General correspondence', 'General correspondence', '11-03-2026', 'Zuiderziekenhuis', EMPTY],
+  ['Consultverslag controle bloeddruk', 'Consultverslag', '09-03-2026', 'Huisartsenpraktijk De Kern', 'H. Bakker'],
+  ['Healthcare communication document', 'Healthcare communication document', '06-03-2026', 'Huisartsenpraktijk De Kern', EMPTY],
+  ['Medicatieoverzicht', 'Medicatieoverzicht', '04-03-2026', 'Apotheek Westerhof', 'R. Visser'],
+  ['Uitslag bloedonderzoek', 'Laboratoriumuitslag', '02-03-2026', 'Zuiderziekenhuis', EMPTY],
+  ['document(3).pdf', EMPTY, '28-02-2026', 'Palga', EMPTY],
+  ['Verwijsbrief MDL', 'Verwijsbrief', '27-02-2026', 'Huisartsenpraktijk De Kern', 'H. Bakker'],
+  ['Pathology report', 'Pathology report', '26-02-2026', 'Palga', EMPTY],
+  ['Radiologieverslag echo abdomen', 'Radiologieverslag', '24-02-2026', 'Zuiderziekenhuis', 'M. de Groot'],
+  ['Polikliniekbrief MDL', 'Polikliniekbrief', '21-02-2026', 'Zuiderziekenhuis', 'S. Wiersma'],
+  ['Operatieverslag', 'Verslag', '19-02-2026', 'Zuiderziekenhuis', 'A. el Amrani'],
+  ['Uitslag bloedonderzoek', 'Laboratoriumuitslag', '12-02-2026', 'Huisartsenpraktijk De Kern', EMPTY],
+  ['Anesthesieverslag', 'Verslag', '10-02-2026', 'Zuiderziekenhuis', 'T. Okonkwo'],
+];
+
+const ROWS_2 = [
+  ['Ontslagbrief opname cardiologie', 'Ontslagbrief', '14-03-2026', 'Zuiderziekenhuis', 'J.X. van der Laan', '2 versies'],
+  ['Brief van internist aan huisarts', 'Brief', '11-03-2026', 'Zuiderziekenhuis', EMPTY, 'afgeleide titel'],
+  ['Consultverslag controle bloeddruk', 'Consultverslag', '09-03-2026', 'Huisartsenpraktijk De Kern', 'H. Bakker', ''],
+  ['Brief van huisarts aan MDL-arts', 'Brief', '06-03-2026', 'Huisartsenpraktijk De Kern', EMPTY, 'afgeleide titel'],
+  ['Medicatieoverzicht', 'Medicatieoverzicht', '04-03-2026', 'Apotheek Westerhof', 'R. Visser', ''],
+  ['Uitslag bloedonderzoek', 'Laboratoriumuitslag', '02-03-2026', 'Zuiderziekenhuis', EMPTY, ''],
+  ['Uitslag weefselonderzoek', 'Pathologieverslag', '28-02-2026', 'Palga', EMPTY, 'afgeleide titel'],
+  ['Verwijsbrief MDL', 'Verwijsbrief', '27-02-2026', 'Huisartsenpraktijk De Kern', 'H. Bakker', ''],
+  ['Pathologieverslag', 'Pathologieverslag', '26-02-2026', 'Palga', EMPTY, ''],
+  ['Radiologieverslag echo abdomen', 'Radiologieverslag', '24-02-2026', 'Zuiderziekenhuis', 'M. de Groot', ''],
+  ['Polikliniekbrief MDL', 'Polikliniekbrief', '21-02-2026', 'Zuiderziekenhuis', 'S. Wiersma', ''],
+  ['Operatieverslag', 'Verslag', '19-02-2026', 'Zuiderziekenhuis', 'A. el Amrani', ''],
+  ['Uitslag bloedonderzoek', 'Laboratoriumuitslag', '12-02-2026', 'Huisartsenpraktijk De Kern', EMPTY, ''],
+  ['Anesthesieverslag', 'Verslag', '10-02-2026', 'Zuiderziekenhuis', 'T. Okonkwo', ''],
+];
+
+const SOORTEN = ['Brief', 'Consultverslag', 'Laboratoriumuitslag', 'Medicatieoverzicht', 'Ontslagbrief', 'Pathologieverslag', 'Polikliniekbrief', 'Radiologieverslag', 'Verslag', 'Verwijsbrief'];
+
+class Component extends DCLogic {
+  componentDidMount() { this.drawIcons(0); }
+  componentDidUpdate() { this.drawIcons(0); }
+
+  drawIcons(tries) {
+    if (window.lucide && window.lucide.createIcons) { window.lucide.createIcons(); return; }
+    if (tries < 40) setTimeout(() => this.drawIcons(tries + 1), 150);
+  }
+
+  renderVals() {
+    return {
+      rows: ROWS_1.map((r) => ({
+        titel: r[0], soort: r[1], datum: r[2], organisatie: r[3], verlener: r[4],
+      })),
+      rows2: ROWS_2.map((r) => ({
+        titel: r[0], soort: r[1], datum: r[2], organisatie: r[3], verlener: r[4], annotatie: r[5] || false,
+      })),
+      soorten: SOORTEN,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
