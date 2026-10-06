@@ -34,6 +34,15 @@
     return DOCS.some(function (d) { return d.groep === groep && verbetering(d.id).samengevoegd; });
   }
   function groepLeden(groep) { return DOCS.filter(function (d) { return d.groep === groep; }); }
+  // Een geselecteerd document staat voor alle versies in zijn groep.
+  function metGroepsleden(ids) {
+    var uit = [];
+    ids.forEach(function (id) {
+      var d = doc(id);
+      (d.groep ? groepLeden(d.groep) : [d]).forEach(function (l) { if (uit.indexOf(l.id) === -1) uit.push(l.id); });
+    });
+    return uit;
+  }
 
   // Regels zoals Sanne ze ziet: samengevoegde dubbele documenten tellen als één regel.
   function zichtbareDocs() {
@@ -247,13 +256,13 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var opties = { titels: form.elements.titels.checked, uitleg: form.elements.uitleg.checked, taal: form.elements.taal.value };
-    var ids = selectie.slice();
-    // Een geselecteerde samengevoegde regel staat voor alle versies in de groep.
-    ids.forEach(function (id) {
-      var d = doc(id);
-      if (d.groep) groepLeden(d.groep).forEach(function (l) { if (ids.indexOf(l.id) === -1) ids.push(l.id); });
-    });
-    var resultaat = window.MockAI.verbeter(ids, opties);
+    // Tellen per regel zoals Sanne die ziet: een groep dubbele documenten is één regel.
+    var regels = {};
+    selectie.forEach(function (id) { var d = doc(id); regels[d.groep || d.id] = id; });
+    var voor = {};
+    Object.keys(regels).forEach(function (k) { voor[k] = regelBeeld(regels[k]); });
+
+    var resultaat = window.MockAI.verbeter(metGroepsleden(selectie), opties);
     Object.keys(resultaat).forEach(function (id) {
       var oud = state.verbeteringen[id] || {};
       var nieuw = resultaat[id];
@@ -263,11 +272,9 @@
         uitleg: nieuw.uitleg || oud.uitleg || undefined,
       };
     });
-    var verbeterd = selectie.filter(function (id) {
-      var d = doc(id);
-      return resultaat[id] || (d.groep && groepLeden(d.groep).some(function (l) { return resultaat[l.id]; }));
-    }).length;
-    var rest = selectie.length - verbeterd;
+    var sleutels = Object.keys(regels);
+    var verbeterd = sleutels.filter(function (k) { return regelBeeld(regels[k]) !== voor[k]; }).length;
+    var rest = sleutels.length - verbeterd;
     state.status = verbeterd === 0
       ? 'Voor de gekozen documenten was geen verbetering nodig.'
       : meervoud(verbeterd, 'document', 'documenten') + ' verbeterd.' + (rest ? ' Voor ' + meervoud(rest, 'document', 'documenten') + ' was geen verbetering nodig.' : '');
@@ -277,6 +284,13 @@
     dialoog.close();
     render('.app-check[data-id="*"]');
   });
+
+  // Wat Sanne van de regel van dit document ziet. Verandert dit, dan is de regel verbeterd.
+  function regelBeeld(id) {
+    var d = doc(id);
+    var kop = d.groep ? groepLeden(d.groep)[0] : d;
+    return JSON.stringify([weergaveVan(kop), d.groep ? groepSamengevoegd(d.groep) : false, verbetering(kop.id).uitleg || null]);
+  }
 
   // ---- Aanduidingen: brongegevens tonen ---------------------------------------
   function popoverInhoud(knop) {
