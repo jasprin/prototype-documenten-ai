@@ -123,7 +123,7 @@
         + '<div style="display: grid; ' + KOLOMMEN + ' height: 44px; flex: none; border-bottom: 1px solid var(--border-subtle); background: var(--white);">' + kop + '</div>'
         + '<div class="app-scroll" style="flex: 1; min-height: 0;">' + rijen + '</div>'
         + '</div>'
-        + '<div role="status" style="padding: 14px 20px 20px; font-size: var(--text-sm); color: var(--text-muted);">' + onder + '</div>'
+        + '<div style="padding: 14px 20px 20px; font-size: var(--text-sm); color: var(--text-muted);">' + onder + '</div>'
         + '</main>',
     };
   }
@@ -175,6 +175,13 @@
 
   // ---- Weergeven ----------------------------------------------------------------
   var frame = document.getElementById('app-frame');
+  var live = document.getElementById('app-live');
+
+  // Meldt een bericht aan schermlezers via de vaste live region buiten het frame.
+  function meld(tekst) {
+    live.textContent = '';
+    setTimeout(function () { live.textContent = tekst; }, 50);
+  }
   var popover = document.getElementById('app-popover');
 
   function route() { return location.hash === '#/pathologieverslag' ? 'detail' : 'tijdslijn'; }
@@ -283,6 +290,7 @@
     bewaar();
     dialoog.close();
     render('.app-check[data-id="*"]');
+    meld(status);
   });
 
   // Wat Sanne van de regel van dit document ziet. Verandert dit, dan is de regel verbeterd.
