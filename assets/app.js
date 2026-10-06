@@ -332,6 +332,8 @@
   document.getElementById('app-reset').addEventListener('click', function () {
     state = { verbeteringen: {}, weergave: 'verbeterd', status: '' };
     selectie = [];
+    form.reset();
+    werkDialoogBij();
     bewaar();
     if (location.hash && location.hash !== '#/') location.hash = '#/'; else render();
     window.scrollTo(0, 0);
