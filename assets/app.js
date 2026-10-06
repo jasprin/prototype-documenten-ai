@@ -233,7 +233,7 @@
     var w = knop.getAttribute('data-weergave');
     if (w) { state.weergave = w; bewaar(); render('[data-weergave="' + w + '"]'); }
     if (knop.getAttribute('data-nav') === 'documenten') location.hash = '#/';
-    if (knop.classList.contains('app-note')) toonPopover(knop);
+    if (knop.classList.contains('app-note')) toonPopover(knop, true);
   });
 
   // ---- Pop-upvenster -----------------------------------------------------------
@@ -330,18 +330,25 @@
     return '<button type="button" class="app-note" data-note="' + soort + '" data-id="' + d.id + '" aria-describedby="' + beschrijving + '">' + label + '</button>'
       + '<span id="' + beschrijving + '" hidden>' + esc(notitieTekst(notitieInhoud(d, soort))) + '</span>';
   }
-  function toonPopover(knop) {
+  // Een pop-up die door klik of focus is geopend, blijft staan tot focus weggaat, er ernaast wordt geklikt of Escape.
+  var vastgezet = null;
+  function toonPopover(knop, vast) {
     popover.querySelector('.app-popover-body').innerHTML = notitieHtml(notitieInhoud(doc(knop.getAttribute('data-id')), knop.getAttribute('data-note')));
     var r = knop.getBoundingClientRect();
     popover.style.left = Math.max(8, r.left - 16) + 'px';
     popover.style.top = (r.bottom + 10) + 'px';
     popover.hidden = false;
+    if (vast) vastgezet = knop;
   }
-  function verbergPopover() { popover.hidden = true; }
+  function verbergPopover() { popover.hidden = true; vastgezet = null; }
   frame.addEventListener('mouseover', function (e) { var n = e.target.closest('.app-note'); if (n) toonPopover(n); });
-  frame.addEventListener('mouseout', function (e) { if (e.target.closest('.app-note')) verbergPopover(); });
-  frame.addEventListener('focusin', function (e) { if (e.target.classList.contains('app-note')) toonPopover(e.target); });
-  frame.addEventListener('focusout', function (e) { if (e.target.classList.contains('app-note')) verbergPopover(); });
+  frame.addEventListener('mouseout', function (e) {
+    if (!e.target.closest('.app-note')) return;
+    if (vastgezet && document.contains(vastgezet)) toonPopover(vastgezet, true); else verbergPopover();
+  });
+  frame.addEventListener('focusin', function (e) { if (e.target.classList.contains('app-note')) toonPopover(e.target, true); });
+  frame.addEventListener('focusout', function (e) { if (e.target === vastgezet) verbergPopover(); });
+  document.addEventListener('click', function (e) { if (vastgezet && !e.target.closest('.app-note')) verbergPopover(); });
   frame.addEventListener('scroll', verbergPopover, true);
   window.addEventListener('scroll', verbergPopover);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') verbergPopover(); });
