@@ -42,12 +42,14 @@
       return groepLeden(d.groep)[0].id === d.id;
     });
   }
-  function weergaveVan(d) {
-    var v = verbetering(d.id);
+  // De metadata die Sanne ziet. Met toonVerbeterd = false altijd zoals de bron het levert.
+  function weergaveVan(d, toonVerbeterd) {
     var b = d.bron;
+    var verbeterd = toonVerbeterd !== false && verbetering(d.id).titels;
     return {
-      titel: v.titels ? d.verbeterd.titel : b.titel,
-      soort: v.titels ? d.verbeterd.soort : b.soort,
+      titel: verbeterd ? d.verbeterd.titel : b.titel,
+      soort: verbeterd ? d.verbeterd.soort : b.soort,
+      groep: verbeterd ? d.verbeterd.groep : b.groep,
       datum: b.datum, organisatie: b.organisatie, verlener: b.verlener,
     };
   }
@@ -119,11 +121,11 @@
   // ---- Detailscherm pathologieverslag -----------------------------------------
   var LABEL = 'display: block; font-size: var(--text-sm); color: var(--text-muted);';
   var WAARDE = 'display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-strong);';
+  var WAARDE_LEEG = 'display: block; margin-top: 4px; font-size: var(--text-base); color: var(--text-body);';
 
   function veld(label, waarde, extra) {
-    var leeg = waarde === DATA.LEEG;
     return '<span style="display: block;' + (extra || '') + '"><span style="' + LABEL + '">' + esc(label) + '</span>'
-      + '<span style="' + (leeg ? WAARDE.replace('var(--text-strong)', 'var(--text-body)') : WAARDE) + '">' + esc(waarde) + '</span></span>';
+      + '<span style="' + (waarde === DATA.LEEG ? WAARDE_LEEG : WAARDE) + '">' + esc(waarde) + '</span></span>';
   }
 
   function renderDetail() {
@@ -131,11 +133,8 @@
     var v = verbetering('patho');
     var heeftVerbetering = !!(v.titels || v.uitleg);
     var weergave = heeftVerbetering ? state.weergave : 'bron';
-    var titels = weergave === 'verbeterd' && v.titels;
+    var w = weergaveVan(d, weergave === 'verbeterd');
     var uitleg = weergave === 'verbeterd' && v.uitleg;
-    var titel = titels ? d.verbeterd.titel : d.bron.titel;
-    var soort = titels ? d.verbeterd.soort : d.bron.soort;
-    var groep = titels ? DATA.pathologie.verbeterd.groep : DATA.pathologie.bron.groep;
 
     var wissel = heeftVerbetering
       ? '<div class="app-toggle" role="group" aria-label="Weergave">'
@@ -152,12 +151,12 @@
       hoogte: uitleg ? 1048 : 988,
       main: '<main style="flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 28px 32px 0; box-sizing: border-box;">'
         + '<div style="display: flex; align-items: center; gap: 8px; font-size: var(--text-sm); color: var(--text-muted);">'
-        + '<a href="#/" style="color: var(--text-link);">Documenten</a>' + ICON_CHEVRON + '<span>' + esc(titel) + '</span></div>'
-        + '<div class="app-detail-kop"><h1 style="margin: 0; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">' + esc(titel) + '</h1>' + wissel + '</div>'
+        + '<a href="#/" style="color: var(--text-link);">Documenten</a>' + ICON_CHEVRON + '<span>' + esc(w.titel) + '</span></div>'
+        + '<div class="app-detail-kop"><h1 style="margin: 0; font-size: var(--text-xl); font-weight: var(--weight-semibold); color: var(--text-strong); letter-spacing: var(--tracking-tight);">' + esc(w.titel) + '</h1>' + wissel + '</div>'
         + '<div style="display: grid; grid-template-columns: repeat(3, 356px); column-gap: 22px; row-gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--gray-10);">'
-        + veld('Document', titel) + veld('Documentsoort', soort) + veld('Gemaakt op', d.bron.datum)
-        + veld('Zorgorganisatie', d.bron.organisatie) + veld('Gemaakt door', d.bron.verlener) + veld('Groep', groep)
-        + veld('Achtergrond', DATA.pathologie.achtergrond, ' grid-column: 1 / -1;')
+        + veld('Document', w.titel) + veld('Documentsoort', w.soort) + veld('Gemaakt op', w.datum)
+        + veld('Zorgorganisatie', w.organisatie) + veld('Gemaakt door', w.verlener) + veld('Groep', w.groep)
+        + veld('Achtergrond', d.achtergrond, ' grid-column: 1 / -1;')
         + '</div>'
         + inhoud
         + '</main>',

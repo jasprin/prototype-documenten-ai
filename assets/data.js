@@ -17,8 +17,10 @@ window.PGO_DATA = (function () {
     { id: 'weefsel', bron: { titel: 'document(3).pdf', soort: LEEG, datum: '28-02-2026', organisatie: 'Palga', verlener: LEEG },
       verbeterd: { titel: 'Uitslag weefselonderzoek', soort: 'Pathologieverslag' } },
     { id: 'verwijs', bron: { titel: 'Verwijsbrief MDL', soort: 'Verwijsbrief', datum: '27-02-2026', organisatie: 'Huisartsenpraktijk De Kern', verlener: 'H. Bakker' } },
-    { id: 'patho', detail: true, bron: { titel: 'Pathology report', soort: 'Pathology report', datum: '26-02-2026', organisatie: 'Palga', verlener: LEEG },
-      verbeterd: { titel: 'Pathologieverslag', soort: 'Pathologieverslag' }, uitleg: ['nl', 'tr'] },
+    // Het enige document met een detailscherm (beeld 3 en 4). Groep en achtergrond staan alleen daar.
+    { id: 'patho', detail: true, bron: { titel: 'Pathology report', soort: 'Pathology report', groep: 'Pathology study', datum: '26-02-2026', organisatie: 'Palga', verlener: LEEG },
+      verbeterd: { titel: 'Pathologieverslag', soort: 'Pathologieverslag', groep: 'Pathologieonderzoek' },
+      achtergrond: 'Histopathologisch onderzoek, aangevraagd tijdens poliklinisch consult MDL', uitleg: ['nl', 'tr'] },
     { id: 'radiologie', bron: { titel: 'Radiologieverslag echo abdomen', soort: 'Radiologieverslag', datum: '24-02-2026', organisatie: 'Zuiderziekenhuis', verlener: 'M. de Groot' } },
     { id: 'poli', bron: { titel: 'Polikliniekbrief MDL', soort: 'Polikliniekbrief', datum: '21-02-2026', organisatie: 'Zuiderziekenhuis', verlener: 'S. Wiersma' } },
     { id: 'operatie', bron: { titel: 'Operatieverslag', soort: 'Verslag', datum: '19-02-2026', organisatie: 'Zuiderziekenhuis', verlener: 'A. el Amrani' } },
@@ -26,14 +28,7 @@ window.PGO_DATA = (function () {
     { id: 'anesthesie', bron: { titel: 'Anesthesieverslag', soort: 'Verslag', datum: '10-02-2026', organisatie: 'Zuiderziekenhuis', verlener: 'T. Okonkwo' } },
   ];
 
-  // Detailscherm van het pathologieverslag (beeld 3 en 4).
-  var pathologie = {
-    bron: { groep: 'Pathology study' },
-    verbeterd: { groep: 'Pathologieonderzoek' },
-    achtergrond: 'Histopathologisch onderzoek, aangevraagd tijdens poliklinisch consult MDL',
-  };
-
   var talen = { nl: 'Nederlands', tr: 'Turks' };
 
-  return { LEEG: LEEG, documenten: documenten, pathologie: pathologie, talen: talen };
+  return { LEEG: LEEG, documenten: documenten, talen: talen };
 })();
