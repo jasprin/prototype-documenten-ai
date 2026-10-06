@@ -10,8 +10,23 @@
   var selectie = [];
   var status = ''; // resultaat van de laatste handeling; hoort niet bij de bewaarde toestand
 
+  // Neemt alleen geldige waarden over uit de opslag; bij een andere vorm (bijv. van een eerdere versie) begint de pagina leeg.
   function laad() {
-    try { return JSON.parse(sessionStorage.getItem(OPSLAG)); } catch (e) { return null; }
+    var ruw;
+    try { ruw = JSON.parse(sessionStorage.getItem(OPSLAG)); } catch (e) { return null; }
+    if (!ruw || typeof ruw !== 'object' || !ruw.verbeteringen || typeof ruw.verbeteringen !== 'object') return null;
+    var verbeteringen = {};
+    Object.keys(ruw.verbeteringen).forEach(function (id) {
+      var d = doc(id);
+      var v = ruw.verbeteringen[id];
+      if (!d || !v || typeof v !== 'object') return;
+      var geldig = {};
+      if (v.titels === true && d.verbeterd) geldig.titels = true;
+      if (v.samengevoegd && v.samengevoegd === d.groep) geldig.samengevoegd = d.groep;
+      if (d.uitleg && d.uitleg.indexOf(v.uitleg) !== -1) geldig.uitleg = v.uitleg;
+      if (Object.keys(geldig).length) verbeteringen[id] = geldig;
+    });
+    return { verbeteringen: verbeteringen, weergave: ruw.weergave === 'bron' ? 'bron' : 'verbeterd' };
   }
   function bewaar() {
     try { sessionStorage.setItem(OPSLAG, JSON.stringify(state)); } catch (e) { /* zonder opslag werkt alles binnen de pagina */ }
