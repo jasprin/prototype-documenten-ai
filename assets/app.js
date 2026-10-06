@@ -6,8 +6,9 @@
   var OPSLAG = 'pgo-prototype-v1';
 
   // ---- Toestand (bewaard zolang het tabblad open is) ---------------------------
-  var state = laad() || { verbeteringen: {}, weergave: 'verbeterd', status: '' };
+  var state = laad() || { verbeteringen: {}, weergave: 'verbeterd' };
   var selectie = [];
+  var status = ''; // resultaat van de laatste handeling; hoort niet bij de bewaarde toestand
 
   function laad() {
     try { return JSON.parse(sessionStorage.getItem(OPSLAG)); } catch (e) { return null; }
@@ -109,7 +110,7 @@
         + '<span style="' + KOP_CEL + '">Gemaakt door</span>';
 
     var onder = '';
-    if (state.status) onder += '<span class="app-status">' + esc(state.status) + '</span> ';
+    if (status) onder += '<span class="app-status">' + esc(status) + '</span> ';
     onder += heeftVerbeteringen
       ? 'Bij een verbeterde versie zie je de titel zoals de bron die levert door de aanduiding aan te wijzen. Het document zelf verandert niet.'
       : 'Selecteer documenten om ze te laten verbeteren.';
@@ -196,8 +197,7 @@
   }
 
   window.addEventListener('hashchange', function () {
-    state.status = '';
-    bewaar();
+    status = '';
     render();
     window.scrollTo(0, 0);
   });
@@ -275,7 +275,7 @@
     var sleutels = Object.keys(regels);
     var verbeterd = sleutels.filter(function (k) { return regelBeeld(regels[k]) !== voor[k]; }).length;
     var rest = sleutels.length - verbeterd;
-    state.status = verbeterd === 0
+    status = verbeterd === 0
       ? 'Voor de gekozen documenten was geen verbetering nodig.'
       : meervoud(verbeterd, 'document', 'documenten') + ' verbeterd.' + (rest ? ' Voor ' + meervoud(rest, 'document', 'documenten') + ' was geen verbetering nodig.' : '');
     state.weergave = 'verbeterd';
@@ -330,7 +330,8 @@
 
   // ---- Opnieuw beginnen --------------------------------------------------------
   document.getElementById('app-reset').addEventListener('click', function () {
-    state = { verbeteringen: {}, weergave: 'verbeterd', status: '' };
+    state = { verbeteringen: {}, weergave: 'verbeterd' };
+    status = '';
     selectie = [];
     form.reset();
     werkDialoogBij();
