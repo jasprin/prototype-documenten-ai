@@ -81,8 +81,8 @@
         ? '<a href="#/pathologieverslag" style="white-space: nowrap; font-size: var(--text-base); color: var(--text-link);">' + esc(w.titel) + '</a>'
         : '<span style="white-space: nowrap; font-size: var(--text-base); color: var(--text-link);">' + esc(w.titel) + '</span>';
       var notities = [];
-      if (d.groep && groepSamengevoegd(d.groep)) notities.push('<button type="button" class="app-note" data-note="versies" data-id="' + d.id + '">' + meervoud(groepLeden(d.groep).length, 'versie', 'versies') + '</button>');
-      if (v.titels || v.uitleg) notities.push('<button type="button" class="app-note" data-note="verbeterd" data-id="' + d.id + '">verbeterde versie</button>');
+      if (d.groep && groepSamengevoegd(d.groep)) notities.push(notitieKnop(d, 'versies', meervoud(groepLeden(d.groep).length, 'versie', 'versies')));
+      if (v.titels || v.uitleg) notities.push(notitieKnop(d, 'verbeterd', 'verbeterde versie'));
       var gekozen = selectie.indexOf(d.id) !== -1;
       return '<div class="app-row' + (gekozen ? ' is-selected' : '') + '" style="display: grid; ' + KOLOMMEN + ' height: 52px; border-bottom: 1px solid var(--gray-10);">'
         + '<span><input type="checkbox" class="app-check" data-id="' + d.id + '"' + (gekozen ? ' checked' : '') + ' aria-label="Selecteer ' + esc(w.titel) + ', ' + esc(w.datum) + '"></span>'
@@ -301,27 +301,37 @@
   }
 
   // ---- Aanduidingen: brongegevens tonen ---------------------------------------
-  function popoverInhoud(knop) {
-    var d = doc(knop.getAttribute('data-id'));
-    var regel = function (label, waarde) {
-      return '<span style="display: block; color: var(--text-muted); font-size: var(--text-xs);">' + esc(label) + '</span>'
-        + '<span style="display: block; color: var(--text-strong);">' + esc(waarde) + '</span>';
-    };
-    if (knop.getAttribute('data-note') === 'versies') {
-      return '<span style="display: block; color: var(--text-muted); font-size: var(--text-xs);">Versies zoals de bron die levert</span>'
-        + groepLeden(d.groep).map(function (l) { return '<span style="display: block; color: var(--text-strong);">' + esc(l.bron.titel) + ' · ' + esc(l.bron.datum) + '</span>'; }).join('');
+  // Inhoud van een aanduiding als blokken [label, waarden]; bron voor de pop-up en voor de beschrijving voor schermlezers.
+  function notitieInhoud(d, soort) {
+    if (soort === 'versies') {
+      return [['Versies zoals de bron die levert', groepLeden(d.groep).map(function (l) { return l.bron.titel + ' · ' + l.bron.datum; })]];
     }
     var v = verbetering(d.id);
-    var html = '';
+    var blokken = [];
     if (v.titels) {
-      html += regel('Titel zoals de bron die levert', d.bron.titel);
-      if (d.bron.soort !== d.verbeterd.soort) html += '<span class="app-popover-gap"></span>' + regel('Documentsoort zoals de bron die levert', d.bron.soort);
+      blokken.push(['Titel zoals de bron die levert', [d.bron.titel]]);
+      if (d.bron.soort !== d.verbeterd.soort) blokken.push(['Documentsoort zoals de bron die levert', [d.bron.soort]]);
     }
-    if (v.uitleg) html += (html ? '<span class="app-popover-gap"></span>' : '') + regel('Uitleg in begrijpelijke taal', DATA.talen[v.uitleg]);
-    return html;
+    if (v.uitleg) blokken.push(['Uitleg in begrijpelijke taal', [DATA.talen[v.uitleg]]]);
+    return blokken;
+  }
+  function notitieHtml(blokken) {
+    return blokken.map(function (b) {
+      return '<span style="display: block; color: var(--text-muted); font-size: var(--text-xs);">' + esc(b[0]) + '</span>'
+        + b[1].map(function (w) { return '<span style="display: block; color: var(--text-strong);">' + esc(w) + '</span>'; }).join('');
+    }).join('<span class="app-popover-gap"></span>');
+  }
+  function notitieTekst(blokken) {
+    return blokken.map(function (b) { return b[0] + ': ' + b[1].join(', '); }).join('. ');
+  }
+  // Knop voor een aanduiding, met dezelfde inhoud als de pop-up als beschrijving voor schermlezers.
+  function notitieKnop(d, soort, label) {
+    var beschrijving = 'notitie-' + d.id + '-' + soort;
+    return '<button type="button" class="app-note" data-note="' + soort + '" data-id="' + d.id + '" aria-describedby="' + beschrijving + '">' + label + '</button>'
+      + '<span id="' + beschrijving + '" hidden>' + esc(notitieTekst(notitieInhoud(d, soort))) + '</span>';
   }
   function toonPopover(knop) {
-    popover.querySelector('.app-popover-body').innerHTML = popoverInhoud(knop);
+    popover.querySelector('.app-popover-body').innerHTML = notitieHtml(notitieInhoud(doc(knop.getAttribute('data-id')), knop.getAttribute('data-note')));
     var r = knop.getBoundingClientRect();
     popover.style.left = Math.max(8, r.left - 16) + 'px';
     popover.style.top = (r.bottom + 10) + 'px';
